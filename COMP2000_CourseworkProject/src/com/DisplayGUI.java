@@ -34,6 +34,12 @@ public class DisplayGUI extends CardLayout{
     private JButton btnCashPayment;
     private JButton btnCardPayment;
     private JButton btnSubmitCard;
+    private JButton btnCardReturn;
+    private JButton btnPaymentReturn;
+    private JButton btnCashReturn;
+    private JButton btnReceipt;
+    private JButton btnReceiptReturn;
+    private JButton btnCashSubmit;
 
     private JTextField txtBarcode;
     private JTextField txtStockName;
@@ -46,24 +52,19 @@ public class DisplayGUI extends CardLayout{
     private JTextField txtTotalPrice;
     private JTextField txtCardName;
     private JTextField txtCardNumber;
+    private JTextField txtEnterCash;
 
     private JTextArea txtAreaAllStockItems;
     private JTextArea txtAreaTotalItems;
+    private JTextArea txtAreaAllItems;
 
-    private JComboBox cbChooseBank;
-    private JButton btnCardReturn;
-    private JButton btnPaymentReturn;
-    private JButton btnCashReturn;
-    private JButton btnReceipt;
     private JLabel lblCompanyName;
     private JLabel lblPurchaseDate;
     private JLabel lblPaymentType;
     private JLabel lblCustomerName;
     private JLabel lblChange;
-    private JTextArea txtAreaAllItems;
-    private JButton btnReceiptReturn;
-    private JButton btnCashSubmit;
-    private JTextField txtEnterCash;
+
+    private JComboBox cbChooseBank;
 
     public DisplayGUI(){
         MainDisplayPanel.setLayout(cardLayout);
