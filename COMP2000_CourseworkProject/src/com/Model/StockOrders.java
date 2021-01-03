@@ -1,5 +1,7 @@
-package com;
+package com.Model;
 
+
+import com.View.StockDatabase;
 
 public class StockOrders extends StockDatabase {
     public String Barcode;

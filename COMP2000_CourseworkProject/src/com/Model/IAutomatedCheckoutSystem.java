@@ -1,5 +1,8 @@
-package com;
+package com.Model;
 
+
+import com.Model.IKiosk;
+import com.View.StockDatabase;
 
 public interface IAutomatedCheckoutSystem extends IKiosk {
     IKiosk getKioskUserInterface();

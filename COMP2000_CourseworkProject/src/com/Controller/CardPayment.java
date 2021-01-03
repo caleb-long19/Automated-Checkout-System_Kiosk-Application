@@ -1,4 +1,4 @@
-package com;
+package com.Controller;
 
 
 public class CardPayment implements IPaymentMethod {

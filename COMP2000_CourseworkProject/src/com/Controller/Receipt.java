@@ -1,5 +1,7 @@
-package com;
+package com.Controller;
 
+
+import com.Model.Customers;
 
 public class Receipt {
     public String StockItems;

@@ -1,10 +1,12 @@
-package com;
+package com.View;
 
+
+import com.Model.IKiosk;
 
 public class StockDatabase implements IKiosk {
     public String StockItems;
 
-    public AdminUsers AdminUsers;
+    public com.Model.AdminUsers AdminUsers;
 
     public void Add() {
 //begin of modifiable zone(JavaCode)......C/8b3d51fa-099e-4b22-a806-774ba9def241
