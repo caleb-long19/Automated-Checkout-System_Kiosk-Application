@@ -1,7 +1,7 @@
 package com;
 
 
-public class StockDatabase implements IAutomatedCheckoutSystem, IKiosk {
+public class StockDatabase implements IKiosk {
     public String StockItems;
 
     public AdminUsers AdminUsers;

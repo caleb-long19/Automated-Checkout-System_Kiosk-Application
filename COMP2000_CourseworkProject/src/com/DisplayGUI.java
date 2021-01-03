@@ -15,21 +15,42 @@ public class DisplayGUI extends CardLayout{
     private JPanel KioskPage;
     private JPanel AdminLogin;
     private JPanel StockAdminPage;
+    private JPanel PurchasePage;
+    private JPanel CardPaymentPage;
+    private JPanel CashPaymentPage;
+    private JPanel VerificationScreen;
+    private JPanel ReceiptPage;
 
     private JButton btnAdminLogin;
     private JButton btnCustomerKiosk;
     private JButton btnAdminSubmit;
     private JButton btnKioskReturn;
+    private JButton btnExit;
+    private JButton btnLogout;
+    private JButton btnSaveEdit;
+    private JButton btnAddStockItem;
+    private JButton btnRemoveStockItem;
+    private JButton btnPurchase;
+    private JButton btnCashPayment;
+    private JButton btnCardPayment;
+    private JButton btnSubmitCard;
 
     private JTextField txtBarcode;
     private JTextField txtStockName;
     private JTextField txtStockPrice;
-    private JTextArea txtTotalPrice;
     private JTextField txtUsername;
     private JTextField txtPassword;
-    private JButton btnExit;
-    private JButton btnLogout;
+    private JTextField txtAddBarcode;
+    private JTextField txtItemName;
+    private JTextField txtItemPrice;
+    private JTextField txtTotalPrice;
+    private JTextField textField1;
+    private JTextField textField2;
 
+    private JTextArea txtAreaAllStockItems;
+    private JTextArea txtAreaTotalItems;
+
+    private JComboBox cbChooseBank;
 
     public DisplayGUI(){
         MainDisplayPanel.setLayout(cardLayout);
@@ -37,13 +58,18 @@ public class DisplayGUI extends CardLayout{
         MainDisplayPanel.add(KioskPage, "KioskPage");
         MainDisplayPanel.add(AdminLogin, "AdminLoginPage");
         MainDisplayPanel.add(StockAdminPage, "AdminPage");
+        MainDisplayPanel.add(PurchasePage, "PaymentPage");
+        MainDisplayPanel.add(CardPaymentPage, "CardPaymentPage");
+        MainDisplayPanel.add(CashPaymentPage, "CashPaymentPage");
+        MainDisplayPanel.add(VerificationScreen, "VerificationPage");
+        MainDisplayPanel.add(ReceiptPage, "ReceiptPage");
 
         cardLayout.show(MainDisplayPanel, "1");
 
         //Set the Content Panel to our JPanels
         MainPanel.add(MainDisplayPanel);
         MainPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainPanel.setPreferredSize(new Dimension(650, 550));
+        MainPanel.setPreferredSize(new Dimension(600, 400));
         MainPanel.pack();
         MainPanel.setVisible(true);
 
@@ -70,6 +96,34 @@ public class DisplayGUI extends CardLayout{
             }
         });
 
+        btnPurchase.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "PaymentPage");
+            }
+        });
+
+        btnCardPayment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "CardPaymentPage");
+            }
+        });
+
+        btnCashPayment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "CashPaymentPage");
+            }
+        });
+
+        btnSubmitCard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "VerificationPage");
+            }
+        });
+
         btnKioskReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,9 +143,11 @@ public class DisplayGUI extends CardLayout{
                 cardLayout.show(MainDisplayPanel, "LandingPage");
             }
         });
+
     }
 
     public static void main(String[] args){
         new DisplayGUI();
     };
+
 }
