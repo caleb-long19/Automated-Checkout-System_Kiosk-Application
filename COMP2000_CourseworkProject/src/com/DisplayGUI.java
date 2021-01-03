@@ -44,13 +44,26 @@ public class DisplayGUI extends CardLayout{
     private JTextField txtItemName;
     private JTextField txtItemPrice;
     private JTextField txtTotalPrice;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField txtCardName;
+    private JTextField txtCardNumber;
 
     private JTextArea txtAreaAllStockItems;
     private JTextArea txtAreaTotalItems;
 
     private JComboBox cbChooseBank;
+    private JButton btnCardReturn;
+    private JButton btnPaymentReturn;
+    private JButton btnCashReturn;
+    private JButton btnReceipt;
+    private JLabel lblCompanyName;
+    private JLabel lblPurchaseDate;
+    private JLabel lblPaymentType;
+    private JLabel lblCustomerName;
+    private JLabel lblChange;
+    private JTextArea txtAreaAllItems;
+    private JButton btnReceiptReturn;
+    private JButton btnCashSubmit;
+    private JTextField txtEnterCash;
 
     public DisplayGUI(){
         MainDisplayPanel.setLayout(cardLayout);
@@ -69,7 +82,7 @@ public class DisplayGUI extends CardLayout{
         //Set the Content Panel to our JPanels
         MainPanel.add(MainDisplayPanel);
         MainPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainPanel.setPreferredSize(new Dimension(600, 400));
+        MainPanel.setPreferredSize(new Dimension(600, 500));
         MainPanel.pack();
         MainPanel.setVisible(true);
 
@@ -124,6 +137,20 @@ public class DisplayGUI extends CardLayout{
             }
         });
 
+        btnCashSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "ReceiptPage");
+            }
+        });
+
+        btnReceipt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "ReceiptPage");
+            }
+        });
+
         btnKioskReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -144,6 +171,40 @@ public class DisplayGUI extends CardLayout{
             }
         });
 
+        btnCardReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "PaymentPage");
+            }
+        });
+
+        btnCashReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "PaymentPage");
+            }
+        });
+
+        btnPaymentReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "KioskPage");
+            }
+        });
+
+        btnReceiptReturn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "KioskPage");
+            }
+        });
+
+        btnReceipt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "ReceiptPage");
+            }
+        });
     }
 
     public static void main(String[] args){
