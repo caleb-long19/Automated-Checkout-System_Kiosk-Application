@@ -1,10 +1,8 @@
-package com.Model;
+package com.View;
 
-
-import com.View.StockDatabase;
 
 public class AdminUsers extends StockDatabase {
-    public com.Model.StockOrders StockOrders;
+    public StockOrders StockOrders;
 
     public String Name;
 

@@ -2,6 +2,6 @@ package com.Model;
 
 
 public interface IKiosk {
-    void DisplayListofStock();
+    void UpdateListofStock(String data);
 
 }

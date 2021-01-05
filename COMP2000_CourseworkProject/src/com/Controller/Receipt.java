@@ -1,7 +1,7 @@
 package com.Controller;
 
 
-import com.Model.Customers;
+import com.View.Kiosk;
 
 public class Receipt {
     public String StockItems;
@@ -10,7 +10,7 @@ public class Receipt {
 
     public IPaymentMethod iPaymentMethod;
 
-    public Customers customers;
+    public Kiosk customers;
 
     private void PrintoutDetails() {
 //begin of modifiable zone(JavaCode)......C/f2e13aef-ce75-4232-a96b-d16c11abf0e6

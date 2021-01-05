@@ -1,8 +1,13 @@
-package com.Model;
+package com.View;
 
 
-public class Customers implements IKiosk {
+import com.Model.IKiosk;
+import com.Model.IStockDatabase;
+
+public class Kiosk implements IKiosk {
     public String Stock;
+
+    private IStockDatabase iStockDatabase;
 
     public void StockScanner() {
 //begin of modifiable zone(JavaCode)......C/69e22f0c-76df-4db1-a470-ed73d884d3c1
@@ -16,7 +21,7 @@ public class Customers implements IKiosk {
 //end of modifiable zone(JavaCode)........E/09261e82-332a-43af-af46-eb3978d343f8
     }
 
-    public void DisplayListofStock() {
+    public void UpdateListofStock(String data) {
 //begin of modifiable zone(JavaCode)......C/4cb93b73-7cee-4117-bc0b-40eac7bd21ba
 
 //end of modifiable zone(JavaCode)........E/4cb93b73-7cee-4117-bc0b-40eac7bd21ba
