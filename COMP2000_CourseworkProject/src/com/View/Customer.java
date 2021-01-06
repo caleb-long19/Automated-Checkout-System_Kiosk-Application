@@ -4,7 +4,7 @@ package com.View;
 import com.Model.IKiosk;
 import com.Model.IStockDatabase;
 
-public class Kiosk implements IKiosk {
+public class Customer implements IKiosk {
     public String Stock;
 
     private IStockDatabase iStockDatabase;

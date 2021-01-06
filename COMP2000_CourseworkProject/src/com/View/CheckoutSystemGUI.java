@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DisplayGUI extends CardLayout{
+public class CheckoutSystemGUI extends CardLayout{
 
     private JFrame MainPanel = new JFrame("Main Panel");
     CardLayout cardLayout = new CardLayout();
@@ -66,7 +66,7 @@ public class DisplayGUI extends CardLayout{
 
     private JComboBox cbChooseBank;
 
-    public DisplayGUI(){
+    public CheckoutSystemGUI(){
         MainDisplayPanel.setLayout(cardLayout);
         MainDisplayPanel.add(LandingPage, "LandingPage");
         MainDisplayPanel.add(KioskPage, "KioskPage");
@@ -209,7 +209,7 @@ public class DisplayGUI extends CardLayout{
     }
 
     public static void main(String[] args){
-        new DisplayGUI();
+        new CheckoutSystemGUI();
     };
 
 }

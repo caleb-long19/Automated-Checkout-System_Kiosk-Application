@@ -3,13 +3,21 @@ package com.View;
 import com.Model.IKiosk;
 import com.Model.IStockDatabase;
 
+import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class StockDatabase implements IStockDatabase {
     public String StockItems;
 
     public AdminUsers AdminUsers;
+
+    public String filepath = "StockItemsList.txt";
+
+    public String separator = "\\|";
 
     private List<IKiosk> iKiosk = new ArrayList<IKiosk> ();
 
@@ -32,9 +40,21 @@ public class StockDatabase implements IStockDatabase {
     }
 
     public void UpdateKiosk() {
-//begin of modifiable zone(JavaCode)......C/804b0c17-4e08-46ac-ac73-8ab73501a8fb
+        try{
+        File file = new File(filepath);
 
-//end of modifiable zone(JavaCode)........E/804b0c17-4e08-46ac-ac73-8ab73501a8fb
+        Scanner scanner = new Scanner(file);
+
+        while (scanner.hasNextLine()) {
+            String tableRow = scanner.nextLine();
+
+            String[] StockItemDetails = tableRow.split(separator);
+            System.out.println(StockItemDetails[1]);
+        }
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
 }
