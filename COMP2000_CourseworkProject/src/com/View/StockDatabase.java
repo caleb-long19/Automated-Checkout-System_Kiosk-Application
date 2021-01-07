@@ -3,9 +3,10 @@ package com.View;
 import com.Model.IKiosk;
 import com.Model.IStockDatabase;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,22 +22,48 @@ public class StockDatabase implements IStockDatabase {
 
     private List<IKiosk> iKiosk = new ArrayList<IKiosk> ();
 
-    public void Add() {
-//begin of modifiable zone(JavaCode)......C/8b3d51fa-099e-4b22-a806-774ba9def241
+    private final ArrayList<StockOrders> allStockItems = new ArrayList<StockOrders>();
 
-//end of modifiable zone(JavaCode)........E/8b3d51fa-099e-4b22-a806-774ba9def241
+    public void Add() {
+        StockDatabase addItemManager = new StockDatabase();
+
+        addItemManager.UpdateKiosk();
+
+        StockOrders stockItem = new StockOrders();
+        stockItem.setBarcode(20);
+        stockItem.setName("Cake");
+        stockItem.setQuantity(600);
+        stockItem.setPrice(0.49);
+
+        addItemManager.addNewStockItem(stockItem);
+
+        addItemManager.saveStock();
+        System.out.println(stockItem.Name);
     }
 
     public void Remove() {
-//begin of modifiable zone(JavaCode)......C/266ad1af-2e37-45e1-a9f6-aeb589e895f5
+        StockDatabase removeItemManager = new StockDatabase();
 
-//end of modifiable zone(JavaCode)........E/266ad1af-2e37-45e1-a9f6-aeb589e895f5
+        removeItemManager.UpdateKiosk();
+
+        StockOrders removeStock = removeItemManager.getStockAt(3);
+        removeItemManager.removeStockItem(removeStock);
+
+        removeItemManager.saveStock();
     }
 
     public void EditStock() {
-//begin of modifiable zone(JavaCode)......C/99d75bda-ab10-47d2-8608-c622c28d0de7
+        StockDatabase editStockItem = new StockDatabase();
 
-//end of modifiable zone(JavaCode)........E/99d75bda-ab10-47d2-8608-c622c28d0de7
+        editStockItem.UpdateKiosk();
+
+        StockOrders stockItem = editStockItem.getStockAt(1);
+        stockItem.setBarcode(19);
+        stockItem.setName("Peach");
+        stockItem.setQuantity(400);
+        stockItem.setPrice(0.99);
+
+        editStockItem.saveStock();
     }
 
     public void UpdateKiosk() {
@@ -49,15 +76,74 @@ public class StockDatabase implements IStockDatabase {
             String tableRow = scanner.nextLine();
 
             String[] StockItemDetails = tableRow.split(separator);
-            System.out.println(StockItemDetails[0]);
-            System.out.println(StockItemDetails[1]);
-            System.out.println(StockItemDetails[2]);
-            System.out.println(StockItemDetails[3]);
+
+            StockOrders stockItem = new StockOrders();
+
+            int BarcodeToInt = Integer.parseInt(StockItemDetails[0]);
+            stockItem.setBarcode(BarcodeToInt);
+
+            stockItem.setName(StockItemDetails[1]);
+
+            int quantityToInt = Integer.parseInt(StockItemDetails[2]);
+            stockItem.setQuantity(quantityToInt);
+
+            double priceToDouble = Double.parseDouble(StockItemDetails[3]);
+            stockItem.setPrice(priceToDouble);
+
+            allStockItems.add(stockItem);
         }
         }
         catch(FileNotFoundException e){
             e.printStackTrace();
         }
+    }
+
+    public void saveStock(){
+        try{
+            FileWriter writer = new FileWriter(filepath);
+
+            for(int index = 0; index < allStockItems.size(); index++){
+                String dataRow = "";
+
+                if(index > 0){
+                    dataRow += "\n";
+                }
+
+                dataRow += allStockItems.get(index).getBarcode();
+
+                String nameToString = allStockItems.get(index).getName();
+                dataRow += "|" + nameToString;
+
+                String quantityToString = Integer.toString(allStockItems.get(index).getQuantity());
+                dataRow += "|" + quantityToString;
+
+                String priceToString = Double.toString(allStockItems.get(index).getPrice());
+                dataRow += "|" + priceToString;
+
+                writer.write(dataRow);
+            }
+            writer.close();
+            System.out.println("Stock File has been saved!");
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public StockOrders getStockAt(int index){
+        if(index >= allStockItems.size()){
+            return null;
+        }
+        return allStockItems.get(index);
+    }
+
+    public void addNewStockItem(StockOrders newItem){
+        allStockItems.add(newItem);
+    }
+
+    public void removeStockItem(StockOrders stockOutOfDate){
+        allStockItems.remove(stockOutOfDate);
     }
 
 }

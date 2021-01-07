@@ -24,7 +24,7 @@ public class CheckoutSystemGUI extends CardLayout{
     private JButton btnAdminLogin;
     private JButton btnCustomerKiosk;
     private JButton btnAdminSubmit;
-    private JButton btnKioskReturn;
+    private JButton btnReturn;
     private JButton btnExit;
     private JButton btnLogout;
     private JButton btnSaveEdit;
@@ -86,6 +86,10 @@ public class CheckoutSystemGUI extends CardLayout{
         MainPanel.setPreferredSize(new Dimension(600, 500));
         MainPanel.pack();
         MainPanel.setVisible(true);
+
+        StockDatabase test3 = new StockDatabase();
+
+        txtAreaAllStockItems.append(test3.StockItems);
 
         // Button which is used to take the customer to the Kiosk Page
         btnCustomerKiosk.addActionListener(new ActionListener() {
@@ -152,7 +156,7 @@ public class CheckoutSystemGUI extends CardLayout{
             }
         });
 
-        btnKioskReturn.addActionListener(new ActionListener() {
+        btnReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(MainDisplayPanel, "LandingPage");
@@ -165,6 +169,7 @@ public class CheckoutSystemGUI extends CardLayout{
                 cardLayout.show(MainDisplayPanel, "LandingPage");
             }
         });
+
         btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

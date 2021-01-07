@@ -9,5 +9,4 @@ public interface IStockDatabase {
     void EditStock();
 
     void UpdateKiosk();
-
 }

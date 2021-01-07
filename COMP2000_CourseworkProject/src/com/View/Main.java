@@ -1,13 +1,12 @@
 package com.View;
 
+import java.util.SortedMap;
+
 public class Main {
 
     public static void main(String[] args) {
-	StockDatabase test = new StockDatabase();
+    	StockDatabase callMethod = new StockDatabase();
+    	callMethod.Remove();
 
-	test.UpdateKiosk();
-
-	AdminUsers test2 = new AdminUsers();
-	test2.Login();
-    }
+	}
 }
