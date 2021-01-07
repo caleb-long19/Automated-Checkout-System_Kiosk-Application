@@ -3,6 +3,11 @@ package com.View;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	StockDatabase test = new StockDatabase();
+
+	test.UpdateKiosk();
+
+	AdminUsers test2 = new AdminUsers();
+	test2.Login();
     }
 }

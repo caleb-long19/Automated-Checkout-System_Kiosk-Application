@@ -1,6 +1,10 @@
 package com.View;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class AdminUsers extends StockDatabase {
     public StockOrders StockOrders;
 
@@ -8,10 +12,29 @@ public class AdminUsers extends StockDatabase {
 
     public String Password;
 
-    public void Login() {
-//begin of modifiable zone(JavaCode)......C/8e5d0222-4228-499e-9baf-d3fa9edd74cb
+    public String filepath = "resources\\AdminUserLogins.txt";
 
-//end of modifiable zone(JavaCode)........E/8e5d0222-4228-499e-9baf-d3fa9edd74cb
+    public String separator = "\\|";
+
+    public void Login() {
+        try{
+            File file = new File(filepath);
+
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+                String tableRow = scanner.nextLine();
+
+                String[] StockItemDetails = tableRow.split(separator);
+                System.out.println(StockItemDetails[0]);
+                System.out.println(StockItemDetails[1]);
+                System.out.println(StockItemDetails[2]);
+                System.out.println(StockItemDetails[3]);
+            }
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
     public void AccessStock() {

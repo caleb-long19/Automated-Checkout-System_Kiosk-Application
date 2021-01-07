@@ -15,7 +15,7 @@ public class StockDatabase implements IStockDatabase {
 
     public AdminUsers AdminUsers;
 
-    public String filepath = "StockItemsList.txt";
+    public String filepath = "resources\\StockItemsList.txt";
 
     public String separator = "\\|";
 
@@ -49,7 +49,10 @@ public class StockDatabase implements IStockDatabase {
             String tableRow = scanner.nextLine();
 
             String[] StockItemDetails = tableRow.split(separator);
+            System.out.println(StockItemDetails[0]);
             System.out.println(StockItemDetails[1]);
+            System.out.println(StockItemDetails[2]);
+            System.out.println(StockItemDetails[3]);
         }
         }
         catch(FileNotFoundException e){
