@@ -23,32 +23,31 @@ public class StockDatabase implements IStockDatabase{
     public final ArrayList<StockOrders> allStockItems = new ArrayList<StockOrders>();
 
     public void Add() {
-                StockDatabase addItemManager = new StockDatabase();
+        StockDatabase addItemManager = new StockDatabase();
 
-                addItemManager.UpdateKiosk();
+        addItemManager.UpdateKiosk();
 
-                StockOrders stockItem = new StockOrders();
-                stockItem.setBarcode(1);
-                stockItem.setName("StockName");
-                stockItem.setQuantity(3);
-                stockItem.setPrice(4.99);
+        StockOrders stockItem = new StockOrders();
+        stockItem.setBarcode(1);
+        stockItem.setName("StockName");
+        stockItem.setQuantity(3);
+        stockItem.setPrice(4.99);
 
-                addItemManager.addNewStockItem(stockItem);
+        addItemManager.addNewStockItem(stockItem);
 
-                addItemManager.saveStock();
-                System.out.println(stockItem.Name);
+        addItemManager.saveStock();
+        System.out.println(stockItem.Name);
     }
 
     public void Remove() {
+        StockDatabase removeItemManager = new StockDatabase();
 
-                StockDatabase removeItemManager = new StockDatabase();
+        removeItemManager.UpdateKiosk();
 
-                removeItemManager.UpdateKiosk();
+        StockOrders removeStock = removeItemManager.getStockAt(4);
+        removeItemManager.removeStockItem(removeStock);
 
-                StockOrders removeStock = removeItemManager.getStockAt(4);
-                removeItemManager.removeStockItem(removeStock);
-
-                removeItemManager.saveStock();
+        removeItemManager.saveStock();
     }
 
     public void EditStock() {

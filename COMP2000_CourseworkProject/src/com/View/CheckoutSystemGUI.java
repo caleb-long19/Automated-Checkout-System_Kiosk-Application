@@ -1,9 +1,11 @@
 package com.View;
 
+import com.Model.AdminUsers;
 import com.Model.StockDatabase;
 import com.Model.StockOrders;
 import org.w3c.dom.Text;
 
+import javax.naming.Name;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -48,8 +50,8 @@ public class CheckoutSystemGUI extends CardLayout{
     public JTextField txtBarcode;
     public JTextField txtStockName;
     public JTextField txtStockPrice;
-    private JTextField txtUsername;
-    private JTextField txtPassword;
+    public JTextField txtUsername;
+    public JTextField txtPassword;
     private JTextField txtAddBarcode;
     private JTextField txtItemName;
     private JTextField txtItemPrice;
@@ -70,6 +72,7 @@ public class CheckoutSystemGUI extends CardLayout{
 
     private JComboBox cbChooseBank;
     public JTextField txtQuantity;
+    private JLabel lblLoginError;
 
     public CheckoutSystemGUI(){
         MainDisplayPanel.setLayout(cardLayout);
@@ -118,14 +121,16 @@ public class CheckoutSystemGUI extends CardLayout{
         btnRemoveStockItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                StockDatabase newStockDatabase = new StockDatabase();
+                newStockDatabase.Remove();
             }
         });
 
         btnSaveEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                StockDatabase newStockDatabase = new StockDatabase();
+                newStockDatabase.EditStock();
             }
         });
     }
@@ -143,6 +148,23 @@ public class CheckoutSystemGUI extends CardLayout{
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(MainDisplayPanel, "AdminLoginPage");
+            }
+        });
+
+        btnAdminSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AdminUsers AdminManager = new AdminUsers();
+                AdminManager.Login();
+
+                if(txtUsername.getText().contains(AdminManager.getUsername()) && txtPassword.getText().contains(AdminManager.getPassword())){
+                    cardLayout.show(MainDisplayPanel, "AdminPage");
+                    System.out.println("Success: Correct Admin Details Provided!");
+                }
+                else{
+                    lblLoginError.setText("Error: Incorrect Admin Details!");
+                    System.out.println("Error: Incorrect Admin Details!");
+                }
             }
         });
     }
@@ -166,13 +188,6 @@ public class CheckoutSystemGUI extends CardLayout{
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(MainDisplayPanel, "CashPaymentPage");
-            }
-        });
-
-        btnAdminSubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(MainDisplayPanel, "AdminPage");
             }
         });
 
