@@ -31,6 +31,15 @@ The receipt display is required to be in a separate GUI panel of the application
 - Receipt
 
 ### Screenshots
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/LandingPage.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/Kiosk%20Interface.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/AdminLoginPage.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/AdminKioskPage.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/PaymentPage.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/CreditCardPage.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/CashPage.png?raw=true?raw=true "Landing Page")
+![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/ReceiptPage.png?raw=true "Landing Page")
+
 
 ### Built With
 - IntelliJ (Java)
