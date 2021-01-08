@@ -1,8 +1,10 @@
-package com.View;
+package com.Model;
 
-import com.Model.IKiosk;
-import com.Model.IStockDatabase;
+import com.View.CheckoutSystemGUI;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -11,45 +13,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StockDatabase implements IStockDatabase {
+public class StockDatabase implements IStockDatabase{
     public String StockItems;
-
     public AdminUsers AdminUsers;
-
     public String filepath = "resources\\StockItemsList.txt";
-
     public String separator = "\\|";
 
     private List<IKiosk> iKiosk = new ArrayList<IKiosk> ();
-
-    private final ArrayList<StockOrders> allStockItems = new ArrayList<StockOrders>();
+    public final ArrayList<StockOrders> allStockItems = new ArrayList<StockOrders>();
 
     public void Add() {
-        StockDatabase addItemManager = new StockDatabase();
+                StockDatabase addItemManager = new StockDatabase();
 
-        addItemManager.UpdateKiosk();
+                addItemManager.UpdateKiosk();
 
-        StockOrders stockItem = new StockOrders();
-        stockItem.setBarcode(20);
-        stockItem.setName("Cake");
-        stockItem.setQuantity(600);
-        stockItem.setPrice(0.49);
+                StockOrders stockItem = new StockOrders();
+                stockItem.setBarcode(1);
+                stockItem.setName("StockName");
+                stockItem.setQuantity(3);
+                stockItem.setPrice(4.99);
 
-        addItemManager.addNewStockItem(stockItem);
+                addItemManager.addNewStockItem(stockItem);
 
-        addItemManager.saveStock();
-        System.out.println(stockItem.Name);
+                addItemManager.saveStock();
+                System.out.println(stockItem.Name);
     }
 
     public void Remove() {
-        StockDatabase removeItemManager = new StockDatabase();
 
-        removeItemManager.UpdateKiosk();
+                StockDatabase removeItemManager = new StockDatabase();
 
-        StockOrders removeStock = removeItemManager.getStockAt(3);
-        removeItemManager.removeStockItem(removeStock);
+                removeItemManager.UpdateKiosk();
 
-        removeItemManager.saveStock();
+                StockOrders removeStock = removeItemManager.getStockAt(0);
+                removeItemManager.removeStockItem(removeStock);
+
+                removeItemManager.saveStock();
     }
 
     public void EditStock() {

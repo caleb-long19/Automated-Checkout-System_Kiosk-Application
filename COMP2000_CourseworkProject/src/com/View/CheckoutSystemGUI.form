@@ -2,11 +2,11 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.View.CheckoutSystemGUI">
   <grid id="27dc6" binding="MainDisplayPanel" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="755" height="449"/>
+      <xy x="20" y="20" width="786" height="449"/>
     </constraints>
     <properties>
       <background color="-1577746"/>
-      <enabled value="true"/>
+      <enabled value="false"/>
     </properties>
     <border type="none"/>
     <children>
@@ -183,16 +183,6 @@
               <text value="Currently Scanned Items:"/>
             </properties>
           </component>
-          <component id="7e2fd" class="javax.swing.JButton" binding="btnReturn">
-            <constraints>
-              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font name="Fira Code" size="12"/>
-              <label value="Return To Login Page"/>
-              <text value="Return To Login Page"/>
-            </properties>
-          </component>
           <vspacer id="9aa18">
             <constraints>
               <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -245,6 +235,16 @@
               <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
+          <component id="7e2fd" class="javax.swing.JButton" binding="btnReturn">
+            <constraints>
+              <grid row="11" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Fira Code" size="12"/>
+              <label value="Return To Login Page"/>
+              <text value="Return To Login Page"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="63905" binding="AdminLogin" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -344,27 +344,29 @@
           </hspacer>
         </children>
       </grid>
-      <grid id="bc52f" binding="StockAdminPage" layout-manager="GridLayoutManager" row-count="9" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="bc52f" binding="StockAdminPage" layout-manager="GridLayoutManager" row-count="15" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <card name="Card4"/>
         </constraints>
         <properties>
           <background color="-1"/>
+          <enabled value="false"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="88bbb" class="javax.swing.JTextField" binding="txtAddBarcode">
+          <component id="d4e92" class="javax.swing.JLabel">
             <constraints>
-              <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="11" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <font name="Arial" size="16"/>
+              <text value="Stock Database - Admin Domain"/>
+            </properties>
           </component>
           <component id="9558d" class="javax.swing.JTextArea" binding="txtAreaAllStockItems">
             <constraints>
-              <grid row="2" column="0" row-span="6" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="0" row-span="13" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
               </grid>
             </constraints>
@@ -373,9 +375,34 @@
               <foreground color="-14407895"/>
             </properties>
           </component>
+          <component id="b6045" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="14"/>
+              <text value="List of Stock Items:"/>
+            </properties>
+          </component>
+          <component id="88bbb" class="javax.swing.JTextField" binding="txtAddBarcode">
+            <constraints>
+              <grid row="2" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
           <component id="ab6d7" class="javax.swing.JTextField" binding="txtItemName">
             <constraints>
-              <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="3" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="ab8aa" class="javax.swing.JTextField" binding="txtQuantity">
+            <constraints>
+              <grid row="4" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -383,97 +410,78 @@
           </component>
           <component id="25562" class="javax.swing.JTextField" binding="txtItemPrice">
             <constraints>
-              <grid row="6" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="5" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties/>
           </component>
-          <vspacer id="181cf">
+          <component id="5fb65" class="javax.swing.JLabel">
             <constraints>
-              <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
-          </vspacer>
+            <properties>
+              <text value="Price"/>
+            </properties>
+          </component>
+          <component id="f719c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Quantity"/>
+            </properties>
+          </component>
+          <component id="83bf1" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Name"/>
+            </properties>
+          </component>
+          <component id="c549d" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Barcode"/>
+            </properties>
+          </component>
           <component id="79e95" class="javax.swing.JButton" binding="btnAddStockItem">
             <constraints>
-              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <label value="Add Stock Item"/>
               <text value="Add Stock Item"/>
             </properties>
           </component>
-          <component id="d4e92" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font name="Arial" size="16"/>
-              <text value="Stock Database - Admin Domain"/>
-            </properties>
-          </component>
           <component id="bb970" class="javax.swing.JButton" binding="btnSaveEdit">
             <constraints>
-              <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <label value="Save Edit"/>
               <text value="Save Edit"/>
             </properties>
           </component>
-          <component id="631aa" class="javax.swing.JButton" binding="btnLogout">
-            <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <label value="Logout"/>
-              <text value="Logout"/>
-            </properties>
-          </component>
-          <hspacer id="d07d1">
-            <constraints>
-              <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <component id="c549d" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Label"/>
-            </properties>
-          </component>
-          <component id="f719c" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Label"/>
-            </properties>
-          </component>
-          <component id="5fb65" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Label"/>
-            </properties>
-          </component>
-          <component id="b6045" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="List of Stock Items:"/>
-            </properties>
-          </component>
           <component id="49b4" class="javax.swing.JButton" binding="btnRemoveStockItem">
             <constraints>
-              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <label value="Remove Item"/>
               <text value="Remove Item"/>
+            </properties>
+          </component>
+          <component id="631aa" class="javax.swing.JButton" binding="btnLogout">
+            <constraints>
+              <grid row="14" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <label value="Logout"/>
+              <text value="Logout"/>
             </properties>
           </component>
         </children>
@@ -670,6 +678,11 @@
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <model>
+                <item value="Barclays"/>
+                <item value="Lloyds"/>
+                <item value="Natwest"/>
+              </model>
               <popupVisible value="false"/>
             </properties>
           </component>

@@ -1,5 +1,9 @@
 package com.View;
 
+import com.Model.StockDatabase;
+import com.Model.StockOrders;
+import org.w3c.dom.Text;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class CheckoutSystemGUI extends CardLayout{
 
-    private JFrame MainPanel = new JFrame("Main Panel");
+    public JFrame MainPanel = new JFrame("Main Panel");
     CardLayout cardLayout = new CardLayout();
 
     private JPanel MainDisplayPanel;
@@ -28,8 +32,8 @@ public class CheckoutSystemGUI extends CardLayout{
     private JButton btnExit;
     private JButton btnLogout;
     private JButton btnSaveEdit;
-    private JButton btnAddStockItem;
-    private JButton btnRemoveStockItem;
+    public JButton btnAddStockItem;
+    public JButton btnRemoveStockItem;
     private JButton btnPurchase;
     private JButton btnCashPayment;
     private JButton btnCardPayment;
@@ -41,9 +45,9 @@ public class CheckoutSystemGUI extends CardLayout{
     private JButton btnReceiptReturn;
     private JButton btnCashSubmit;
 
-    private JTextField txtBarcode;
-    private JTextField txtStockName;
-    private JTextField txtStockPrice;
+    public JTextField txtBarcode;
+    public JTextField txtStockName;
+    public JTextField txtStockPrice;
     private JTextField txtUsername;
     private JTextField txtPassword;
     private JTextField txtAddBarcode;
@@ -65,6 +69,7 @@ public class CheckoutSystemGUI extends CardLayout{
     private JLabel lblChange;
 
     private JComboBox cbChooseBank;
+    public JTextField txtQuantity;
 
     public CheckoutSystemGUI(){
         MainDisplayPanel.setLayout(cardLayout);
@@ -81,16 +86,51 @@ public class CheckoutSystemGUI extends CardLayout{
         cardLayout.show(MainDisplayPanel, "1");
 
         //Set the Content Panel to our JPanels
+        txtAreaAllStockItems.setLineWrap(true);
         MainPanel.add(MainDisplayPanel);
         MainPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MainPanel.setPreferredSize(new Dimension(600, 500));
         MainPanel.pack();
         MainPanel.setVisible(true);
 
-        StockDatabase test3 = new StockDatabase();
+        DisplayStock();
+        AddEditRemoveFunctions();
+        selectLoginType();
+        submitButtons();
+        returnButtons();
+    }
 
-        txtAreaAllStockItems.append(test3.StockItems);
+    public void DisplayStock(){
+        StockOrders newStockDatabase = new StockOrders();
 
+        txtAreaAllStockItems.setText(newStockDatabase.Name);
+    }
+
+    public void AddEditRemoveFunctions(){
+        btnAddStockItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StockDatabase newStockDatabase = new StockDatabase();
+                newStockDatabase.Add();
+            }
+        });
+
+        btnRemoveStockItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        btnSaveEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    public void selectLoginType(){
         // Button which is used to take the customer to the Kiosk Page
         btnCustomerKiosk.addActionListener(new ActionListener() {
             @Override
@@ -99,21 +139,15 @@ public class CheckoutSystemGUI extends CardLayout{
             }
         });
 
-        // Button which is used to take the User to the Admin Login Page
         btnAdminLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(MainDisplayPanel, "AdminLoginPage");
             }
         });
+    }
 
-        btnAdminSubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(MainDisplayPanel, "AdminPage");
-            }
-        });
-
+    public void submitButtons(){
         btnPurchase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,6 +166,13 @@ public class CheckoutSystemGUI extends CardLayout{
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(MainDisplayPanel, "CashPaymentPage");
+            }
+        });
+
+        btnAdminSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(MainDisplayPanel, "AdminPage");
             }
         });
 
@@ -155,7 +196,9 @@ public class CheckoutSystemGUI extends CardLayout{
                 cardLayout.show(MainDisplayPanel, "ReceiptPage");
             }
         });
+    }
 
+    public void returnButtons(){
         btnReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -216,5 +259,6 @@ public class CheckoutSystemGUI extends CardLayout{
     public static void main(String[] args){
         new CheckoutSystemGUI();
     };
+
 
 }

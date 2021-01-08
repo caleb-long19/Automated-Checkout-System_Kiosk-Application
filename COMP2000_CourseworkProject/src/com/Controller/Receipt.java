@@ -1,7 +1,7 @@
 package com.Controller;
 
 
-import com.View.StockOrders;
+import com.Model.StockOrders;
 
 public class Receipt {
     public String StockItems;
