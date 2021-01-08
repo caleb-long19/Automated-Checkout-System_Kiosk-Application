@@ -2,3 +2,5 @@
 12|Cheese|100|3.49
 20|Plums|600|0.49
 21|Sausage|650|3.99
+1|StockName|3|4.99
+1|StockName|3|4.99

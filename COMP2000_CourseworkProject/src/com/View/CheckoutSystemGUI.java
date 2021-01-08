@@ -89,7 +89,7 @@ public class CheckoutSystemGUI extends CardLayout{
         txtAreaAllStockItems.setLineWrap(true);
         MainPanel.add(MainDisplayPanel);
         MainPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainPanel.setPreferredSize(new Dimension(600, 500));
+        MainPanel.setPreferredSize(new Dimension(800, 500));
         MainPanel.pack();
         MainPanel.setVisible(true);
 

@@ -45,7 +45,7 @@ public class StockDatabase implements IStockDatabase{
 
                 removeItemManager.UpdateKiosk();
 
-                StockOrders removeStock = removeItemManager.getStockAt(0);
+                StockOrders removeStock = removeItemManager.getStockAt(4);
                 removeItemManager.removeStockItem(removeStock);
 
                 removeItemManager.saveStock();
