@@ -26,8 +26,8 @@ The receipt display is required to be in a separate GUI panel of the application
 - View all Stock Items
 - Select Stock Items/Quantity
 - Purchase Selected Stock Items
- - Pay With Credit Card
- - Pay With Cash 
+  - Pay With Credit Card
+  - Pay With Cash 
 - Receipt
 
 ### Screenshots
