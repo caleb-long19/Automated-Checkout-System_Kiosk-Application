@@ -12,38 +12,41 @@ public class StockOrders {
 
     public double Price;
 
-
+    //region All GET Methods for StockDatabase
     public int getBarcode(){
         return Barcode;
-    }
-
-    public void setBarcode(int barcode){
-        this.Barcode = barcode;
     }
 
     public String getName(){
         return Name;
     }
 
-    public void setName(String name){
-        this.Name = name;
-    }
-
     public int getQuantity(){
         return Quantity;
+    }
+
+    public Double getPrice(){
+        return Price;
+    }
+    //endregion
+
+    //region All SET Methods for StockDatabase
+    public void setBarcode(int barcode){
+        this.Barcode = barcode;
+    }
+
+    public void setName(String name){
+        this.Name = name;
     }
 
     public void setQuantity(int quantity){
         this.Quantity = quantity;
     }
 
-    public Double getPrice(){
-        return Price;
-    }
-
     public void setPrice(Double price){
         this.Price = price;
     }
+    //endregion
 
     public List<Customer> customer = new ArrayList<Customer> ();
 

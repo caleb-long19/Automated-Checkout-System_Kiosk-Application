@@ -1,10 +1,5 @@
 package com.Model;
 
-import com.View.CheckoutSystemGUI;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -22,6 +17,7 @@ public class StockDatabase implements IStockDatabase{
     private List<IKiosk> iKiosk = new ArrayList<IKiosk> ();
     public final ArrayList<StockOrders> allStockItems = new ArrayList<StockOrders>();
 
+    //region This contains the ADD, Edit, and Remove Methods
     public void Add() {
         StockDatabase addItemManager = new StockDatabase();
 
@@ -63,7 +59,9 @@ public class StockDatabase implements IStockDatabase{
 
         editStockItem.saveStock();
     }
+    //endregion
 
+    //region This contains the Read and Write Methods for the Stock Data
     public void UpdateKiosk() {
         try{
         File file = new File(filepath);
@@ -128,6 +126,7 @@ public class StockDatabase implements IStockDatabase{
             e.printStackTrace();
         }
     }
+    //endregion
 
     public StockOrders getStockAt(int index){
         if(index >= allStockItems.size()){

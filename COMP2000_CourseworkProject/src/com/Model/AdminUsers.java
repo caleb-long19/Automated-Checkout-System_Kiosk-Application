@@ -8,9 +8,7 @@ public class AdminUsers extends StockDatabase {
     public StockOrders StockOrders;
 
     public String Name;
-
     public String Password;
-
     public String filepath = "resources\\AdminUserLogins.txt";
 
     public void Login() {
@@ -49,20 +47,24 @@ public class AdminUsers extends StockDatabase {
 
     }
 
+    //region All Get Methods
     public String getUsername(){
         return Name;
-    }
-
-    public void setName(String username){
-        this.Name = username;
     }
 
     public String getPassword(){
         return Password;
     }
+    //endregion
+
+    //region All Set Methods
+    public void setName(String username){
+        this.Name = username;
+    }
 
     public void setPassword(String password){
         this.Password = password;
     }
+    //endregion
 
 }

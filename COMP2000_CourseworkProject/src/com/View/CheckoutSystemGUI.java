@@ -3,9 +3,7 @@ package com.View;
 import com.Model.AdminUsers;
 import com.Model.StockDatabase;
 import com.Model.StockOrders;
-import org.w3c.dom.Text;
 
-import javax.naming.Name;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +14,7 @@ public class CheckoutSystemGUI extends CardLayout{
     public JFrame MainPanel = new JFrame("Main Panel");
     CardLayout cardLayout = new CardLayout();
 
+    //region All JPanels used in GUI Form
     private JPanel MainDisplayPanel;
     private JPanel LandingPage;
     private JPanel KioskPage;
@@ -26,7 +25,9 @@ public class CheckoutSystemGUI extends CardLayout{
     private JPanel CashPaymentPage;
     private JPanel VerificationScreen;
     private JPanel ReceiptPage;
+    //endregion
 
+    //region All JButtons used in the GUI Form
     private JButton btnAdminLogin;
     private JButton btnCustomerKiosk;
     private JButton btnAdminSubmit;
@@ -46,7 +47,9 @@ public class CheckoutSystemGUI extends CardLayout{
     private JButton btnReceipt;
     private JButton btnReceiptReturn;
     private JButton btnCashSubmit;
+    //endregion
 
+    //region All JTextFields used in the GUI Form
     public JTextField txtBarcode;
     public JTextField txtStockName;
     public JTextField txtStockPrice;
@@ -59,20 +62,24 @@ public class CheckoutSystemGUI extends CardLayout{
     private JTextField txtCardName;
     private JTextField txtCardNumber;
     private JTextField txtEnterCash;
+    public JTextField txtQuantity;
+    //endregion
 
+    //region All JTextAreas used in GUI Form
     private JTextArea txtAreaAllStockItems;
     private JTextArea txtAreaTotalItems;
     private JTextArea txtAreaAllItems;
+    //endregion
 
+    //region All JLabels used in GUI Form
     private JLabel lblCompanyName;
     private JLabel lblPurchaseDate;
     private JLabel lblPaymentType;
     private JLabel lblCustomerName;
     private JLabel lblChange;
-
-    private JComboBox cbChooseBank;
-    public JTextField txtQuantity;
     private JLabel lblLoginError;
+    private JComboBox cbChooseBank;
+    //endregion
 
     public CheckoutSystemGUI(){
         MainDisplayPanel.setLayout(cardLayout);
