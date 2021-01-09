@@ -1,9 +1,6 @@
-package com.Model;
+package Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class StockOrders {
+public class StockOrdersModel {
     public int Barcode;
 
     public String Name;
@@ -11,6 +8,13 @@ public class StockOrders {
     public int Quantity;
 
     public double Price;
+
+    public StockOrdersModel(int Barcode, String Name, int Quantity, double Price){
+        this.Barcode = Barcode;
+        this.Name = Name;
+        this.Quantity = Quantity;
+        this.Price = Price;
+    }
 
     //region All GET Methods for StockDatabase
     public int getBarcode(){
@@ -47,7 +51,4 @@ public class StockOrders {
         this.Price = price;
     }
     //endregion
-
-    public List<Customer> customer = new ArrayList<Customer> ();
-
 }
