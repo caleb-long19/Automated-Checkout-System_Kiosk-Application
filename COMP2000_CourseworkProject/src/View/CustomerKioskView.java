@@ -6,28 +6,28 @@ import java.awt.*;
 public class CustomerKioskView {
 
     //region CustomerKioskView GUI JAttributes
-    private JPanel MainKioskPanel;
-    private JPanel KioskPanel;
-    private JPanel CashPaymentPanel;
-    private JPanel CardPaymentPanel;
-    private JPanel ReceiptPanel;
+    public JPanel MainKioskPanel;
+    public JPanel KioskPanel;
+    public JPanel CashPaymentPanel;
+    public JPanel CardPaymentPanel;
+    public JPanel ReceiptPanel;
 
     private JButton btnKioskAdd;
-    private JButton btnCardPurchases;
-    private JButton btnCashPurchase;
-    private JButton btnKioskReturn;
-    private JButton btnSubmitCash;
-    private JButton btnCardSubmit;
+    public JButton btnCardPurchases;
+    public JButton btnCashPurchase;
+    public JButton btnKioskReturn;
+    public JButton btnSubmitCash;
+    public JButton btnCardSubmit;
 
-    private JTextField txtKioskStockName;
-    private JTextField txtKioskPrice;
+    public JTextField txtKioskStockName;
+    public JTextField txtKioskPrice;
     private JTextField txtCashAmount;
     private JTextField txtCardName;
     private JTextField txtCardNumber;
-    private JTextField txtBarcodeScan;
+    public JTextField txtBarcodeScan;
 
-    private JList lstAllPurchasedStock;
-    private JList lstShoppingCart;
+    public JList lstAllPurchasedStock;
+    public JList lstShoppingCart;
 
     private JLabel lblCompanyName;
     private JLabel lblCurrentDate;
@@ -44,8 +44,8 @@ public class CustomerKioskView {
         //Set our card layout and add our Panels to it!
         MainKioskPanel.setLayout(cardLayout);
         MainKioskPanel.add(KioskPanel, "CustomerKioskPanel");
-        MainKioskPanel.add(CashPaymentPanel, "CashPaymentPanel");
         MainKioskPanel.add(CardPaymentPanel, "CardPaymentPanel");
+        MainKioskPanel.add(CashPaymentPanel, "CashPaymentPanel");
         MainKioskPanel.add(ReceiptPanel, "ReceiptPanel");
         cardLayout.show(MainKioskPanel, "1");
 
@@ -60,6 +60,12 @@ public class CustomerKioskView {
     }
 
     //region Get/Set Methods
+
+    public CardLayout getCardLayout(){
+        return cardLayout;
+    }
+
+    //region TextField Get/Sets
     public JTextField getTxtBarcodeScan(){
         return txtBarcodeScan;
     }
@@ -67,5 +73,47 @@ public class CustomerKioskView {
     public void setTxtBarcodeScan(JTextField txtBarcodeScans){
         this.txtBarcodeScan = txtBarcodeScans;
     }
+
+    public JTextField getTxtKioskStockName(){
+        return txtKioskStockName;
+    }
+
+    public void setTxtKioskStockName(JTextField txtKioskStockName){
+        this.txtKioskStockName = txtKioskStockName;
+    }
+
+    public JTextField getTxtKioskPrice(){
+        return txtKioskPrice;
+    }
+
+    public void setTxtKioskPrice(JTextField txtKioskPrice){
+        this.txtKioskPrice = txtKioskPrice;
+    }
+    //endregion
+
+    //region JButtons Get/Sets
+    public JButton getBtnKioskAdd(){
+        return btnKioskAdd;
+    }
+
+    public JButton getBtnCardPurchases(){
+        return btnCardPurchases;
+    }
+
+    public JButton getBtnCashPurchase(){
+        return btnCashPurchase;
+    }
+    //endregion
+
+    //region JList Get/Sets
+    public JList getLstShoppingCart(){
+        return lstShoppingCart;
+    }
+
+    public void setLstAllPurchasedStock(JList purchasedStock){
+        this.lstShoppingCart = purchasedStock;
+    }
+    //endregion
+
     //endregion
 }

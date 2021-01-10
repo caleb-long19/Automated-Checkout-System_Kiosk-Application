@@ -57,7 +57,7 @@ public class AdminView {
         adminFrame = new JFrame(AdminMenu);
         adminFrame.add(AdminPanel);
         adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        adminFrame.setSize(500, 500);
+        adminFrame.setSize(550, 500);
         adminFrame.setLocationRelativeTo(null);
         adminFrame.pack();
         adminFrame.setVisible(true);

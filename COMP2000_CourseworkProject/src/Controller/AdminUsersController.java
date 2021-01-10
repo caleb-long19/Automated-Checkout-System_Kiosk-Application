@@ -31,18 +31,28 @@ public class AdminUsersController {
     }
 
     public void Login() {
+
+        //Get value from txtUsername and txtPassword and store them in Name and Password variables
+        Name = adminView.getTxtUsername().getText();
+        Password = adminView.getTxtPassword().getText();
+
+        //Store Name and Password into setAdminUsername and SetAdminPassword
+        adminModel.setAdminUsername(Name);
+        adminModel.setAdminPassword(Password);
+
         try{
             File file = new File(filepath);
 
             Scanner scanner = new Scanner(file);
 
+            //Run a loop to check if Username and Password are valid in the AdminUserLogins text file
             while (scanner.hasNextLine()) {
                 String tableRow = scanner.nextLine();
 
                 String[] LoginDe = tableRow.split(separator);
 
-                adminModel.setAdminUsername(LoginDe[0]);
-                adminModel.setAdminPassword(LoginDe[1]);
+                Name = LoginDe[0];
+                Password = LoginDe[1];
 
                 AccessStock();
             }
@@ -53,8 +63,8 @@ public class AdminUsersController {
     }
 
     public void AccessStock() {
-        if(adminView.getTxtUsername().getText().equals(adminModel.getAdminUsername())
-                && adminView.getTxtPassword().getText().equals(adminModel.getAdminPassword())){
+        //If the Username and Password entered by the user are equal to the Name & Password variables, let them enter
+        if(adminView.getTxtUsername().getText().equals(Name) && adminView.getTxtPassword().getText().equals(Password)){
 
             adminView.getCardLayout().show(adminView.AdminPanel, "AdminDatabasePage");
             System.out.println("Success: Correct Admin Details Provided!");

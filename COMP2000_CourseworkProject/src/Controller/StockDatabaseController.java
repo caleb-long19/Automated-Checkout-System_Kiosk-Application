@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.IStockDatabaseController;
 import Model.StockOrdersModel;
 import View.AdminView;
 
@@ -8,18 +9,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.temporal.JulianFields;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StockDatabaseController implements IStockDatabaseController {
 
+    private StockOrdersModel stockOrdersModel;
+    private AdminView adminView;
+
     public final ArrayList<StockOrdersModel> allStockItems = new ArrayList<StockOrdersModel>();
     public String filepath = "resources\\StockItemsList.txt";
     public String separator = "\\|";
-
-    private StockOrdersModel stockOrdersModel;
-    private AdminView adminView;
 
     public StockDatabaseController(StockOrdersModel stockModel, AdminView adminV){
         stockOrdersModel = stockModel;
@@ -96,6 +96,7 @@ public class StockDatabaseController implements IStockDatabaseController {
                 stockItem.setPrice(priceToDouble);
 
                 allStockItems.add(stockItem);
+                Refresh();
             }
         }
         catch(FileNotFoundException e){
@@ -130,6 +131,7 @@ public class StockDatabaseController implements IStockDatabaseController {
             writer.close();
             System.out.println("Stock File has been saved!");
 
+            Refresh();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -137,7 +139,7 @@ public class StockDatabaseController implements IStockDatabaseController {
     }
     //endregion
 
-    //region Retrieve, Add, and Remove Stock
+    //region Refresh, Retrieve, Add, and Remove Stock
     public StockOrdersModel getStockAt(int index){
         if(index >= allStockItems.size()){
             return null;
@@ -152,5 +154,11 @@ public class StockDatabaseController implements IStockDatabaseController {
     public void removeStockItem(StockOrdersModel stockOutOfDate){
         allStockItems.remove(stockOutOfDate);
     }
+
+    public void Refresh(){
+        adminView.lstStockEditDisplay.setListData(allStockItems.toArray());
+        adminView.lstDisplayStock.setListData(allStockItems.toArray());
+    }
     //endregion
+
 }

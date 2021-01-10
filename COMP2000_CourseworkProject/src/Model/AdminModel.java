@@ -10,6 +10,7 @@ public class AdminModel {
         this.adminPassword = adminPasswords;
     }
 
+    //region Get/Set Methods
     public String getAdminUsername(){
         return adminUsername;
     }
@@ -25,4 +26,5 @@ public class AdminModel {
     public void setAdminPassword(String AdminPassword){
         this.adminPassword = AdminPassword;
     }
+    //endregion
 }
