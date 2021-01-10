@@ -1,5 +1,4 @@
 package Controller;
-
 import Model.AdminModel;
 import View.AdminView;
 
@@ -20,11 +19,11 @@ public class AdminController {
     }
 
     public void initAdminController(){
-        adminView.getBtnAdminSubmit().addActionListener(e -> saveAdminUser());
+        adminView.getBtnLogin().addActionListener(e -> saveAdminUser());
     }
 
     private void saveAdminUser(){
         adminModel.setAdminUsername(adminView.getTxtUsername().getText());
-        System.out.println("Welcome " + adminView.getTxtUsername());
+        System.out.println("Welcome " + adminModel.getAdminUsername());
     }
 }

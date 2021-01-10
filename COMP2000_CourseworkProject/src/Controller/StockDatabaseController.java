@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.IStockDatabaseController;
 import Model.StockOrdersModel;
 import View.AdminView;
 
@@ -9,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.temporal.JulianFields;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,21 +19,23 @@ public class StockDatabaseController implements IStockDatabaseController {
     public String separator = "\\|";
 
     private StockOrdersModel stockOrdersModel;
-    public AdminView adminView;
+    private AdminView adminView;
 
     public StockDatabaseController(StockOrdersModel stockModel, AdminView adminV){
         stockOrdersModel = stockModel;
         adminView = adminV;
         adminView.getBtnAddItem().addActionListener(e -> Add());
+        adminView.getBtnEditItem().addActionListener(e -> Edit());
         adminView.getBtnRemoveItem().addActionListener(e -> Remove());
     }
 
     //region Add, Edit, and Remove Functions
     public void Add() {
-        System.out.println("Button Pressed...");
+        System.out.println("Staring to Add New Stock Item!");
 
-        StockOrdersModel stockItem = new StockOrdersModel(2, "Bacon", 200, 3.99);
+        StockOrdersModel stockItem = new StockOrdersModel();
 
+        //Stores the text that has been input into the txt boxes on the Admin Menu GUI!
         stockItem.setBarcode(Integer.parseInt(adminView.getTxtAdminBarcode().getText()));
         stockItem.setName(adminView.getTxtAdminStockName().getText());
         stockItem.setQuantity(Integer.parseInt(adminView.getTxtAdminQuantity().getText()));
@@ -42,19 +44,27 @@ public class StockDatabaseController implements IStockDatabaseController {
         //Add Stock Item data (Barcode, Name, Quantity, and Price to allStockItems ArrayList)
         addNewStockItem(stockItem);
 
+        //Display a Message Dialog to inform the Admin that a Stock Item has been Added!
+        JOptionPane.showMessageDialog(null, "New Item Added: " + stockItem.getName(),"Stock Addition", JOptionPane.INFORMATION_MESSAGE);
+
         //Read new Stock Item into StockItemsList.txt
         saveKioskStock();
-
-        //Display a Message Dialog to inform the Admin that a Stock Item has been Added!
-        JOptionPane.showMessageDialog(null, "New Item Added: " + stockOrdersModel.getName(),"Stock Addition", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void Edit() {
+        StockOrdersModel stockEditItem;
 
+        stockEditItem = getStockAt(adminView.getLstStockEditDisplay().getSelectedIndex());
+        stockEditItem.setBarcode(Integer.parseInt(adminView.txtEditBarcode.getText()));
+        stockEditItem.setName(adminView.txtEditName.getText());
+        stockEditItem.setQuantity(Integer.parseInt(adminView.txtEditQuantity.getText()));
+        stockEditItem.setPrice(Double.parseDouble(adminView.txtEditPrice.getText()));
+
+        saveKioskStock();
     }
 
     public void Remove() {
-        StockOrdersModel removeStock = getStockAt(0);
+        StockOrdersModel removeStock = getStockAt(adminView.getLstStockEditDisplay().getSelectedIndex());
         removeStockItem(removeStock);
         saveKioskStock();
     }
@@ -72,7 +82,7 @@ public class StockDatabaseController implements IStockDatabaseController {
 
                 String[] StockItemDetails = tableRow.split(separator);
 
-                StockOrdersModel stockItem = new StockOrdersModel(1, "Cake", 200, 3.99);
+                StockOrdersModel stockItem = new StockOrdersModel();
 
                 int BarcodeToInt = Integer.parseInt(StockItemDetails[0]);
                 stockItem.setBarcode(BarcodeToInt);

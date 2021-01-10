@@ -5,9 +5,9 @@ public class AdminModel {
     String adminUsername;
     String adminPassword;
 
-    public AdminModel(String username, String password){
-        this.adminUsername = username;
-        this.adminPassword = password;
+    public AdminModel(String adminUsernames, String adminPasswords){
+        this.adminUsername = adminUsernames;
+        this.adminPassword = adminPasswords;
     }
 
     public String getAdminUsername(){

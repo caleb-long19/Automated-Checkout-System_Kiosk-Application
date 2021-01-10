@@ -9,13 +9,6 @@ public class StockOrdersModel {
 
     public double Price;
 
-    public StockOrdersModel(int Barcode, String Name, int Quantity, double Price){
-        this.Barcode = Barcode;
-        this.Name = Name;
-        this.Quantity = Quantity;
-        this.Price = Price;
-    }
-
     //region All GET Methods for StockDatabase
     public int getBarcode(){
         return Barcode;
