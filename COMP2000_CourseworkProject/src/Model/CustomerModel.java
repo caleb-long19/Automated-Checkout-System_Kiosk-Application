@@ -12,7 +12,7 @@ public class CustomerModel {
 
     //region Get/Set Methods
     //region Get/Set Item Stock Methods
-    public String getStock(){
+    public String getScannedStockStock(){
         return scannedStock;
     }
 

@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.IStockDatabaseController;
+import Model.IStockDatabase;
 import Model.StockOrdersModel;
 import View.AdminView;
 
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StockDatabaseController implements IStockDatabaseController {
+public class StockDatabaseController implements IStockDatabase {
 
     DefaultListModel dm = new DefaultListModel();
     public String filepath = "resources\\StockItemsList.txt";

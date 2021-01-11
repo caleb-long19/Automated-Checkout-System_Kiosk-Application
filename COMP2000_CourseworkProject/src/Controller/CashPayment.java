@@ -4,33 +4,57 @@ import Model.IPaymentMethod;
 import Model.StockOrdersModel;
 import View.CustomerKioskView;
 
+import javax.swing.*;
+
 public class CashPayment implements IPaymentMethod {
 
-    String CashAmount;
-
+    //region Objects and Variables
+    //region Class Objects
     CustomerKioskView customerKioskView;
+    CustomerController customerController;
     StockOrdersModel stockOrdersModel;
+    //endregion
 
-    public CashPayment(CustomerKioskView ckv, StockOrdersModel som){
-        this.customerKioskView = ckv;
-        this.stockOrdersModel = som;
+    //region Variables
+    Double CashAmount;
+    Double totalCashRequired;
+    Double Change;
+    boolean cashPayTrue = false;
+    //endregion
+    //endregion
+
+    public CashPayment(CustomerKioskView ckv, CustomerController cc,  StockOrdersModel som){
+        customerKioskView = ckv;
+        customerController = cc;
+        stockOrdersModel = som;
         customerKioskView.btnSubmitCash.addActionListener(e -> Payment());
     }
 
     public void Payment(){
-        setCashAmount(customerKioskView.getTxtCashAmount().getText());
+        totalCashRequired = customerController.getTotalItemPrices();
+        CashAmount = Double.parseDouble(customerKioskView.getTxtCashAmount().getText());
 
-        if(getCashAmount() == null){
-            customerKioskView.getCardLayout().show(customerKioskView.MainKioskPanel, "ReceiptPanel");
+        Change = totalCashRequired - CashAmount;
+        System.out.println(Change);
+
+        if(Change == 0){
+            System.out.println("No change required!");
+        }else if(Change >= 0){
+            JOptionPane.showMessageDialog(null, "Product still not paid, You still owe: " + Change,"Replenishing Stock", JOptionPane.INFORMATION_MESSAGE);
         }
+        else{
+            System.out.println("Your Change: " + Change);
+        }
+        cashPayTrue = true;
+        setCashAmount(Change);
     }
 
     //region Get/Set Methods
-    public String getCashAmount(){
+    public Double getCashAmount(){
         return CashAmount;
     }
 
-    public void setCashAmount(String cash){
+    public void setCashAmount(Double cash){
         this.CashAmount = cash;
     }
     //endregion

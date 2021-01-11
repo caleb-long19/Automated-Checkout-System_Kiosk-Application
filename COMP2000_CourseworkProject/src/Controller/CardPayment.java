@@ -8,9 +8,13 @@ import javax.swing.*;
 
 public class CardPayment implements IPaymentMethod {
 
-    private JComboBox Bank;
-    private String BankNumber;
-    private String CustomerName;
+    //region Variables
+    String BankNumber;
+    String CustomerName;
+    String VerificationMessage = "Verifying Your Details: ";
+    boolean cardPayTrue = false;
+    JComboBox Bank;
+    //endregion
 
     CustomerKioskView customerKioskView;
     StockOrdersModel stockOrdersModel;
@@ -22,13 +26,20 @@ public class CardPayment implements IPaymentMethod {
     }
 
     public void Payment(){
-        StoreBankDetails();
+        setBank(customerKioskView.getCbBank());
+        if(customerKioskView.txtCardName.getText().equals("") || customerKioskView.txtCardNumber.getText().equals("")){
+            JOptionPane.showMessageDialog(null, VerificationMessage + getBank().getModel().getSelectedItem() + ": Your Details Are Invalid!","Verification Screen", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            StoreBankDetails();
+        }
     }
 
     public void StoreBankDetails(){
+        cardPayTrue = true;
         setBank(customerKioskView.getCbBank());
         setCustomerName(customerKioskView.getTxtCardName().getText());
-        setBankNumber(customerKioskView.getTxtCardName().getText());
+        setBankNumber(customerKioskView.getTxtCardNumber().getText());JOptionPane.showMessageDialog(null, VerificationMessage + getBank().getModel().getSelectedItem() + ": Your Details Are Verified!!","Verification Screen", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("Bank:" + getBank().getModel().getSelectedItem() + " Card Name:" + getCustomerName() + " Bank Number:" + getBankNumber());
     }
 
     //region Get/Set Methods

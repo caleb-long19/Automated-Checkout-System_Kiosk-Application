@@ -1,5 +1,9 @@
 package View;
 
+import Controller.CardPayment;
+import Controller.CashPayment;
+import Controller.CustomerController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,15 +30,18 @@ public class CustomerKioskView {
     public JTextField txtCardNumber;
     public JTextField txtBarcodeScan;
 
-    public JList lstAllPurchasedStock;
     public JList lstShoppingCart;
+    public JTable tblShoppingCart;
 
-    private JLabel lblCompanyName;
-    private JLabel lblCurrentDate;
-    private JLabel lblPaymentChoice;
-    private JLabel lblCashChange;
-    private JLabel lblTotalCost;
+    public JLabel lblCompanyName;
+    public JLabel lblCurrentDate;
+    public JLabel lblPaymentChoice;
+    public JLabel lblCashChange;
+    public JLabel lblTotalCost;
     private JComboBox cbBank;
+    public JTextField txtTotalPrice;
+    public JLabel lblPaymentDue;
+    public JTable tblReceiptList;
     //endregion
 
     public JFrame kioskFrame;
@@ -53,7 +60,7 @@ public class CustomerKioskView {
         kioskFrame = new JFrame(AdminMenu);
         kioskFrame.add(MainKioskPanel);
         kioskFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        kioskFrame.setSize(500, 500);
+        kioskFrame.setSize(500, 350);
         kioskFrame.setLocationRelativeTo(null);
         kioskFrame.pack();
         kioskFrame.setVisible(true);

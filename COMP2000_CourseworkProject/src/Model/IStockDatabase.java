@@ -1,6 +1,6 @@
 package Model;
 
-public interface IStockDatabaseController{
+public interface IStockDatabase {
 
     void Add();
 
