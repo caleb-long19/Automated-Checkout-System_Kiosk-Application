@@ -1,7 +1,4 @@
-import Controller.AdminController;
-import Controller.AdminUsersController;
-import Controller.CustomerController;
-import Controller.StockDatabaseController;
+import Controller.*;
 import Model.AdminModel;
 import Model.CustomerModel;
 import Model.StockOrdersModel;
@@ -18,9 +15,12 @@ public class App {
         AdminController ac = new AdminController(am, av);
         CustomerModel cm = new CustomerModel("");
         CustomerKioskView ckv = new CustomerKioskView("Customer Kiosk");
+        CardPayment cardp = new CardPayment(ckv, som);
+        CashPayment cashp = new CashPayment(ckv, som);
+
         StockDatabaseController sdc = new StockDatabaseController(som, av);
-        AdminUsersController auc = new AdminUsersController(av, som, am);
-        DisplayStockListData dsld = new DisplayStockListData(av, sdc);
+        AdminUsersController auc = new AdminUsersController(av, som, am, sdc);
+        DisplayStockListData dsld = new DisplayStockListData(av, sdc, som);
         CustomerController cc = new CustomerController(sdc, som, cm, ckv);
 
         //Call Methods from Class Objects

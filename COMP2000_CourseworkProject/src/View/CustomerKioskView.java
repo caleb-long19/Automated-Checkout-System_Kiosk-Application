@@ -22,8 +22,8 @@ public class CustomerKioskView {
     public JTextField txtKioskStockName;
     public JTextField txtKioskPrice;
     private JTextField txtCashAmount;
-    private JTextField txtCardName;
-    private JTextField txtCardNumber;
+    public JTextField txtCardName;
+    public JTextField txtCardNumber;
     public JTextField txtBarcodeScan;
 
     public JList lstAllPurchasedStock;
@@ -74,21 +74,38 @@ public class CustomerKioskView {
         this.txtBarcodeScan = txtBarcodeScans;
     }
 
-    public JTextField getTxtKioskStockName(){
-        return txtKioskStockName;
+    public JTextField getTxtCashAmount(){
+        return txtCashAmount;
     }
 
-    public void setTxtKioskStockName(JTextField txtKioskStockName){
-        this.txtKioskStockName = txtKioskStockName;
+    public void setTxtCashAmount(JTextField txtCashAmount){
+        this.txtCashAmount = txtCashAmount;
     }
 
-    public JTextField getTxtKioskPrice(){
-        return txtKioskPrice;
+    public JComboBox getCbBank(){
+        return cbBank;
     }
 
-    public void setTxtKioskPrice(JTextField txtKioskPrice){
-        this.txtKioskPrice = txtKioskPrice;
+    public void setCbBank(JComboBox cbBank){
+        this.cbBank = cbBank;
     }
+
+    public JTextField getTxtCardName(){
+        return txtCardName;
+    }
+
+    public void setTxtCardName(JTextField txtCardNames){
+        this.txtCardName = txtCardNames;
+    }
+
+    public JTextField getTxtCardNumber(){
+        return txtCardNumber;
+    }
+
+    public void setTxtCardNumber(JTextField txtCardNumber){
+        this.txtCardNumber = txtCardNumber;
+    }
+
     //endregion
 
     //region JButtons Get/Sets

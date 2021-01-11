@@ -7,13 +7,13 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="c6af2" binding="KioskPanel" layout-manager="GridLayoutManager" row-count="6" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="c6af2" binding="KioskPanel" layout-manager="GridLayoutManager" row-count="15" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <card name="Card1"/>
         </constraints>
         <properties>
-          <background color="-459265"/>
+          <background color="-1"/>
         </properties>
         <border type="none"/>
         <children>
@@ -28,41 +28,21 @@
           </component>
           <component id="1c8da" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Insert a Barcode Number into the Barcode Scanner!"/>
             </properties>
           </component>
-          <vspacer id="76a7d">
-            <constraints>
-              <grid row="5" column="1" row-span="1" col-span="5" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <component id="10ee0" class="javax.swing.JButton" binding="btnCashPurchase">
-            <constraints>
-              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Purchase with Cash"/>
-            </properties>
-          </component>
           <component id="aa9ee" class="javax.swing.JList" binding="lstShoppingCart">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="5" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="3" column="0" row-span="10" col-span="5" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-7762544"/>
-            </properties>
-          </component>
-          <component id="cdb0c" class="javax.swing.JButton" binding="btnCardPurchases">
-            <constraints>
-              <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Purchase with Card"/>
+              <background color="-6512220"/>
+              <foreground color="-12369085"/>
             </properties>
           </component>
           <component id="ae2c2" class="javax.swing.JTextField" binding="txtBarcodeScan">
@@ -89,6 +69,27 @@
               <text value="Add Item"/>
             </properties>
           </component>
+          <component id="cdb0c" class="javax.swing.JButton" binding="btnCardPurchases">
+            <constraints>
+              <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Purchase with Card"/>
+            </properties>
+          </component>
+          <component id="10ee0" class="javax.swing.JButton" binding="btnCashPurchase">
+            <constraints>
+              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Purchase with Cash"/>
+            </properties>
+          </component>
+          <vspacer id="ac912">
+            <constraints>
+              <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
         </children>
       </grid>
       <grid id="dad03" binding="CashPaymentPanel" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -97,7 +98,7 @@
           <card name="Card2"/>
         </constraints>
         <properties>
-          <background color="-459265"/>
+          <background color="-1"/>
         </properties>
         <border type="none"/>
         <children>
@@ -112,6 +113,7 @@
             </constraints>
             <properties>
               <font name="Arial Black" size="24" style="1"/>
+              <foreground color="-10855846"/>
               <text value="Cash Payment Option"/>
             </properties>
           </component>
@@ -158,7 +160,7 @@
           <card name="Card4"/>
         </constraints>
         <properties>
-          <background color="-459265"/>
+          <background color="-513"/>
         </properties>
         <border type="none"/>
         <children>
@@ -273,7 +275,7 @@
           <card name="Card3"/>
         </constraints>
         <properties>
-          <background color="-459265"/>
+          <background color="-513"/>
         </properties>
         <border type="none"/>
         <children>
@@ -366,7 +368,10 @@
                 <preferred-size width="150" height="50"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-3288364"/>
+              <foreground color="-6974059"/>
+            </properties>
           </component>
           <component id="6a39a" class="javax.swing.JLabel">
             <constraints>

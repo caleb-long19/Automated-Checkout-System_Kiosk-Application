@@ -1,8 +1,7 @@
 package View;
 
+
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,12 +40,14 @@ public class AdminView {
 
     public JList lstStockEditDisplay;
     public JList lstDisplayStock;
+    public JButton btnRefresh;
+    public JButton btnDelivery;
     //endregion
 
-    public int selectedIndex;
     CardLayout cardLayout = new CardLayout();
 
     public AdminView(String AdminMenu){
+
         //Create the principle form
         AdminPanel.setLayout(cardLayout);
         AdminPanel.add(LoginPanel, "AdminLoginPage");
@@ -57,9 +58,7 @@ public class AdminView {
         adminFrame = new JFrame(AdminMenu);
         adminFrame.add(AdminPanel);
         adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        adminFrame.setSize(550, 500);
-        adminFrame.setLocationRelativeTo(null);
-        adminFrame.pack();
+        adminFrame.setSize(500, 400);
         adminFrame.setVisible(true);
 
         GUIMethods();

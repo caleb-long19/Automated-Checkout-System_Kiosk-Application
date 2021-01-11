@@ -5,10 +5,12 @@ import View.AdminView;
 public class DisplayStockListData {
     AdminView adminView;
     StockDatabaseController stockDatabaseController;
+    StockOrdersModel stockOrdersModel;
 
-    public DisplayStockListData(AdminView av, StockDatabaseController sdc){
+    public DisplayStockListData(AdminView av, StockDatabaseController sdc, StockOrdersModel som){
         adminView = av;
         stockDatabaseController = sdc;
+        stockOrdersModel = som;
     }
 
     public void initDisplayStockListData(){

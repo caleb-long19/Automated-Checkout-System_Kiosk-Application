@@ -14,19 +14,22 @@ import java.util.Scanner;
 
 public class StockDatabaseController implements IStockDatabaseController {
 
-    private StockOrdersModel stockOrdersModel;
-    private AdminView adminView;
-
-    public final ArrayList<StockOrdersModel> allStockItems = new ArrayList<StockOrdersModel>();
+    DefaultListModel dm = new DefaultListModel();
     public String filepath = "resources\\StockItemsList.txt";
     public String separator = "\\|";
+
+    private final StockOrdersModel stockOrdersModel;
+    private final AdminView adminView;
+    public final ArrayList<StockOrdersModel> allStockItems = new ArrayList<StockOrdersModel>();
 
     public StockDatabaseController(StockOrdersModel stockModel, AdminView adminV){
         stockOrdersModel = stockModel;
         adminView = adminV;
+
         adminView.getBtnAddItem().addActionListener(e -> Add());
         adminView.getBtnEditItem().addActionListener(e -> Edit());
         adminView.getBtnRemoveItem().addActionListener(e -> Remove());
+        adminView.btnRefresh.addActionListener(e -> Refresh());
     }
 
     //region Add, Edit, and Remove Functions
@@ -64,7 +67,7 @@ public class StockDatabaseController implements IStockDatabaseController {
     }
 
     public void Remove() {
-        StockOrdersModel removeStock = getStockAt(adminView.getLstStockEditDisplay().getSelectedIndex());
+        StockOrdersModel removeStock = getStockAt(adminView.lstStockEditDisplay.getSelectedIndex());
         removeStockItem(removeStock);
         saveKioskStock();
     }
@@ -72,36 +75,35 @@ public class StockDatabaseController implements IStockDatabaseController {
 
     //region Load/Save File Data Methods
     public void LoadKioskData() {
-        try{
-            File file = new File(filepath);
+            try{
+                File file = new File(filepath);
 
-            Scanner scanner = new Scanner(file);
+                Scanner scanner = new Scanner(file);
 
-            while (scanner.hasNextLine()) {
-                String tableRow = scanner.nextLine();
+                while (scanner.hasNextLine()) {
+                    String tableRow = scanner.nextLine();
 
-                String[] StockItemDetails = tableRow.split(separator);
+                    String[] StockItemDetails = tableRow.split(separator);
 
-                StockOrdersModel stockItem = new StockOrdersModel();
+                    StockOrdersModel stockItem = new StockOrdersModel();
 
-                int BarcodeToInt = Integer.parseInt(StockItemDetails[0]);
-                stockItem.setBarcode(BarcodeToInt);
+                    int BarcodeToInt = Integer.parseInt(StockItemDetails[0]);
+                    stockItem.setBarcode(BarcodeToInt);
 
-                stockItem.setName(StockItemDetails[1]);
+                    stockItem.setName(StockItemDetails[1]);
 
-                int quantityToInt = Integer.parseInt(StockItemDetails[2]);
-                stockItem.setQuantity(quantityToInt);
+                    int quantityToInt = Integer.parseInt(StockItemDetails[2]);
+                    stockItem.setQuantity(quantityToInt);
 
-                double priceToDouble = Double.parseDouble(StockItemDetails[3]);
-                stockItem.setPrice(priceToDouble);
+                    double priceToDouble = Double.parseDouble(StockItemDetails[3]);
+                    stockItem.setPrice(priceToDouble);
 
-                allStockItems.add(stockItem);
-                Refresh();
+                    allStockItems.add(stockItem);
+                }
             }
-        }
-        catch(FileNotFoundException e){
-            e.printStackTrace();
-        }
+            catch(FileNotFoundException e){
+                e.printStackTrace();
+            }
     }
 
     public void saveKioskStock(){
@@ -130,8 +132,6 @@ public class StockDatabaseController implements IStockDatabaseController {
             }
             writer.close();
             System.out.println("Stock File has been saved!");
-
-            Refresh();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -156,9 +156,19 @@ public class StockDatabaseController implements IStockDatabaseController {
     }
 
     public void Refresh(){
-        adminView.lstStockEditDisplay.setListData(allStockItems.toArray());
-        adminView.lstDisplayStock.setListData(allStockItems.toArray());
+        int index = adminView.getLstStockEditDisplay().getSelectedIndex();
+        if (adminView.lstStockEditDisplay.isSelectedIndex(index)) {
+            adminView.getLstStockEditDisplay().removeSelectionInterval(index, index);
+        }
+        adminView.lstStockEditDisplay.setModel(dm);
+        adminView.lstDisplayStock.setModel(dm);
+
+        for (int i = 0; i < allStockItems.size(); i++)
+        {
+            System.out.println(allStockItems.get(i).getName());
+            String Name = allStockItems.get(i).getName();
+            dm.addElement(Name);
+        }
     }
     //endregion
-
 }

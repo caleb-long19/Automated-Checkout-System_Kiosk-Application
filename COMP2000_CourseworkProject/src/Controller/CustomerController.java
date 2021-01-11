@@ -5,18 +5,14 @@ import View.CustomerKioskView;
 import Model.CustomerModel;
 
 import javax.swing.*;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class CustomerController {
 
     String BarcodeToInt;
     String storeBarcode;
     String separator = "\\|";
-
     boolean stockFound = false;
-    int selectedIndex;
 
     StockDatabaseController stockDatabaseController;
     StockOrdersModel stockOrdersModel;
@@ -40,36 +36,19 @@ public class CustomerController {
     public void ScanStock(){
         storeBarcode = customerKioskView.getTxtBarcodeScan().getText();
         customerModel.setScannedStock(storeBarcode);
+
         try{
-            File file = new File(stockDatabaseController.filepath);
-
-            Scanner scanner = new Scanner(file);
-
-            while (scanner.hasNextLine()) {
-                String tableRow = scanner.nextLine();
-
-                String[] StockItemDetails = tableRow.split(separator);
-
-                BarcodeToInt = StockItemDetails[0];
-
-                if(storeBarcode.contains(BarcodeToInt)){
-                    selectedIndex = Integer.parseInt(BarcodeToInt);
-                    stockFound = true;
+            for (int i = 0; i < stockDatabaseController.allStockItems.toArray().length; i++)
+            {
+                int barcode= stockDatabaseController.allStockItems.get(i).getBarcode();
+                if(storeBarcode.contains(Integer.toString(barcode))){
+                    JOptionPane.showMessageDialog(null, "Item Found: " + stockDatabaseController.allStockItems.get(i).getName(), "Replenishing Stock", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
-        catch(FileNotFoundException e){
+        catch(Exception e){
             e.printStackTrace();
         }
-
-        if(stockFound){
-            stockFound = false;
-            //Display a Message Dialog to inform the Admin that a Stock Item has been Added!
-            JOptionPane.showMessageDialog(null, "Item Added To Basket: " + stockOrdersModel.getName().contains(storeBarcode),"Stock Addition", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(null, "Barcode Number Does Not Exist: Try Again!","Stock Basket", JOptionPane.INFORMATION_MESSAGE);
-        }
-
     }
 
     public void StockPayment(){

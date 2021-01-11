@@ -1,5 +1,11 @@
 package Model;
 
+import Controller.AdminController;
+import Controller.StockDatabaseController;
+import View.AdminView;
+
+import javax.swing.*;
+
 public class StockOrdersModel {
     public int Barcode;
 
