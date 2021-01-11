@@ -2,10 +2,16 @@ import Controller.StockDatabaseController;
 import Model.StockOrdersModel;
 import View.AdminView;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 public class DisplayStockListData {
     AdminView adminView;
     StockDatabaseController stockDatabaseController;
     StockOrdersModel stockOrdersModel;
+
+    int selectedEditIndex;
+    int selectedViewIndex;
 
     public DisplayStockListData(AdminView av, StockDatabaseController sdc, StockOrdersModel som){
         adminView = av;
@@ -14,14 +20,36 @@ public class DisplayStockListData {
     }
 
     public void initDisplayStockListData(){
-        adminView.getLstStockEditDisplay().addListSelectionListener(e -> DisplayData());
-        adminView.getLstDisplayStock().addListSelectionListener(e -> DisplayViewData());
+        adminView.lstStockEditDisplay.addListSelectionListener(e -> SetUpLstData());
+        adminView.lstDisplayStock.addListSelectionListener(e -> SetUpLstData());
+    }
+
+    public void SetUpLstData(){
+        adminView.lstStockEditDisplay.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!adminView.lstStockEditDisplay.isSelectionEmpty()){
+                    selectedEditIndex = adminView.lstStockEditDisplay.getMinSelectionIndex();
+                    DisplayData();
+                }
+            }
+        });
+
+        adminView.lstDisplayStock.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!adminView.lstDisplayStock.isSelectionEmpty()){
+                    selectedViewIndex = adminView.lstDisplayStock.getMinSelectionIndex();
+                    DisplayViewData();
+                }
+            }
+        });
     }
 
     //region Display selected index data from JLists properly
     public void DisplayData(){
         //allStockItems array Gets selected index item from lstStockEditDisplay and stores it in StockOrderModel class object
-        StockOrdersModel currentEditSelectedItem = stockDatabaseController.allStockItems.get(adminView.getLstStockEditDisplay().getSelectedIndex());
+        StockOrdersModel currentEditSelectedItem = stockDatabaseController.allStockItems.get(selectedEditIndex);
 
         //Temp variables to store correct selected index data
         int tempEditBarcodeNum = currentEditSelectedItem.getBarcode();
@@ -38,7 +66,7 @@ public class DisplayStockListData {
 
     public void DisplayViewData(){
         //allStockItems array Gets selected index item from lstDisplayStock and stores it in StockOrderModel class object
-        StockOrdersModel currentViewSelectedItem = stockDatabaseController.allStockItems.get(adminView.getLstDisplayStock().getSelectedIndex());
+        StockOrdersModel currentViewSelectedItem = stockDatabaseController.allStockItems.get(selectedViewIndex);
 
         //Temp variables to store correct selected index data
         int tempViewBarcodeNum = currentViewSelectedItem.getBarcode();

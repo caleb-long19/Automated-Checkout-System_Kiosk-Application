@@ -29,7 +29,6 @@ public class StockDatabaseController implements IStockDatabase {
         adminView.getBtnAddItem().addActionListener(e -> Add());
         adminView.getBtnEditItem().addActionListener(e -> Edit());
         adminView.getBtnRemoveItem().addActionListener(e -> Remove());
-        adminView.btnRefresh.addActionListener(e -> Refresh());
     }
 
     //region Add, Edit, and Remove Functions
@@ -57,7 +56,7 @@ public class StockDatabaseController implements IStockDatabase {
     public void Edit() {
         StockOrdersModel stockEditItem;
 
-        stockEditItem = getStockAt(adminView.getLstStockEditDisplay().getSelectedIndex());
+        stockEditItem = getStockAt(adminView.lstStockEditDisplay.getSelectedIndex());
         stockEditItem.setBarcode(Integer.parseInt(adminView.txtEditBarcode.getText()));
         stockEditItem.setName(adminView.txtEditName.getText());
         stockEditItem.setQuantity(Integer.parseInt(adminView.txtEditQuantity.getText()));
@@ -100,6 +99,7 @@ public class StockDatabaseController implements IStockDatabase {
 
                     allStockItems.add(stockItem);
                 }
+                Refresh();
             }
             catch(FileNotFoundException e){
                 e.printStackTrace();
@@ -132,6 +132,7 @@ public class StockDatabaseController implements IStockDatabase {
             }
             writer.close();
             System.out.println("Stock File has been saved!");
+            Refresh();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -156,10 +157,8 @@ public class StockDatabaseController implements IStockDatabase {
     }
 
     public void Refresh(){
-        int index = adminView.getLstStockEditDisplay().getSelectedIndex();
-        if (adminView.lstStockEditDisplay.isSelectedIndex(index)) {
-            adminView.getLstStockEditDisplay().removeSelectionInterval(index, index);
-        }
+        dm.removeAllElements();
+
         adminView.lstStockEditDisplay.setModel(dm);
         adminView.lstDisplayStock.setModel(dm);
 
@@ -168,6 +167,7 @@ public class StockDatabaseController implements IStockDatabase {
             System.out.println(allStockItems.get(i).getName());
             String Name = allStockItems.get(i).getName();
             dm.addElement(Name);
+
         }
     }
     //endregion
