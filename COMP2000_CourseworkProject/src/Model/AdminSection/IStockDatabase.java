@@ -1,4 +1,4 @@
-package Model;
+package Model.AdminSection;
 
 public interface IStockDatabase {
 

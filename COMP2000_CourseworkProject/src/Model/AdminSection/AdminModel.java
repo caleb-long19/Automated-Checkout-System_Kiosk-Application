@@ -1,16 +1,18 @@
-package Model;
+package Model.AdminSection;
 
 public class AdminModel {
 
+    //region Variables
     String adminUsername;
     String adminPassword;
+    //endregion
 
     public AdminModel(String adminUsernames, String adminPasswords){
         this.adminUsername = adminUsernames;
         this.adminPassword = adminPasswords;
     }
 
-    //region Get/Set Methods
+    //region Get/Set Methods to Store and Retrieve file read Admin Details
     public String getAdminUsername(){
         return adminUsername;
     }

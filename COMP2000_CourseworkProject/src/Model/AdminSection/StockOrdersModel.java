@@ -1,6 +1,8 @@
-package Model;
+package Model.AdminSection;
 
 public class StockOrdersModel {
+
+    //region Variables
     public int Barcode;
 
     public String Name;
@@ -8,8 +10,9 @@ public class StockOrdersModel {
     public int Quantity;
 
     public double Price;
+    //endregion
 
-    //region All GET Methods for StockDatabase
+    //region All GET Methods for StockDatabase to retrieve stored file read Barcode, Name, Quantity, Price
     public int getBarcode(){
         return Barcode;
     }
@@ -27,7 +30,7 @@ public class StockOrdersModel {
     }
     //endregion
 
-    //region All SET Methods for StockDatabase
+    //region All SET Methods for StockDatabase to store file read Barcode, Name, Quantity, Price
     public void setBarcode(int barcode){
         this.Barcode = barcode;
     }

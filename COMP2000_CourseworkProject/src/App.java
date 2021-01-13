@@ -1,9 +1,17 @@
 import Controller.*;
-import Model.AdminModel;
-import Model.CustomerModel;
-import Model.StockOrdersModel;
-import View.AdminView;
-import View.CustomerKioskView;
+import Controller.AdminSection.AdminController;
+import Controller.AdminSection.AdminUsersController;
+import Controller.Payment.CardPayment;
+import Controller.Payment.CashPayment;
+import Controller.Payment.CustomerController;
+import Controller.Payment.Receipt;
+import Model.AdminSection.AdminModel;
+import Model.Bank;
+import Model.CustomerSection.CustomerModel;
+import Model.CustomerSection.IPaymentMethod;
+import Model.AdminSection.StockOrdersModel;
+import View.AdminSection.AdminView;
+import View.CustomerSection.CustomerKioskView;
 
 public class App {
 
@@ -18,10 +26,11 @@ public class App {
         //region Model Objects
         AdminModel am = new AdminModel("", "");
         StockOrdersModel som = new StockOrdersModel();
-        CustomerModel cm = new CustomerModel("");
+        CustomerModel cm = new CustomerModel();
         //endregion
 
         //region Controller Objects
+        IPaymentMethod cpipm = new CardPayment(ckv, som);
         AdminController ac = new AdminController(am, av);
         StockDatabaseController sdc = new StockDatabaseController(som, av);
         AdminUsersController auc = new AdminUsersController(av, som, am, sdc);
@@ -30,9 +39,9 @@ public class App {
 
         //region Class Objects
         DisplayStockListData dsld = new DisplayStockListData(av, sdc, som);
-        CardPayment cardp = new CardPayment(ckv, som);
-        CashPayment cashp = new CashPayment(ckv,cc, som);
-        Receipt r = new Receipt(cc, ckv ,cardp, cashp);
+        CardPayment cardPayment = new CardPayment(ckv, som);
+        CashPayment cashPayment = new CashPayment(ckv,cc, sdc, som);
+        Receipt r = new Receipt(cpipm, cc, ckv, sdc, cardPayment, cashPayment);
         //endregion
 
         //region Calling Methods From Class Objects
@@ -41,7 +50,9 @@ public class App {
         sdc.LoadKioskData();
         auc.initAdminUsersController();
         dsld.initDisplayStockListData();
-        cc.initCustomerController();
+        cardPayment.initCPayment();
+        cashPayment.initCashPayment();
+        r.initReceipt();
         //endregion
 
         //endregion

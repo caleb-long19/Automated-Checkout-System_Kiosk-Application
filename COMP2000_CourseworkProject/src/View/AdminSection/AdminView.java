@@ -1,25 +1,19 @@
-package View;
-
+package View.AdminSection;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
-public class AdminView {
+
+public class AdminView  {
 
     //region GUI JAttributes
     public JFrame adminFrame;
     public JPanel AdminPanel;
     public JPanel LoginPanel;
     public JPanel AdminDatabasePanel;
-    private JTabbedPane adminTabbedPane;
+    public JTabbedPane adminTabbedPane;
 
     private JTextField txtUsername;
     private JTextField txtPassword;
@@ -43,11 +37,11 @@ public class AdminView {
     private JButton btnRemoveItem;
     private JButton btnEditItem;
     private JButton btnAddItem;
+    public JButton btnRefresh;
+    public JButton btnDelivery;
 
     public JList lstStockEditDisplay;
     public JList lstDisplayStock;
-    public JButton btnRefresh;
-    public JButton btnDelivery;
     public JTable tblAdminEdit;
     public JTable tblAdminView;
     //endregion
@@ -55,7 +49,6 @@ public class AdminView {
     CardLayout cardLayout = new CardLayout();
 
     public AdminView(String AdminMenu){
-
         //Create the principle form
         AdminPanel.setLayout(cardLayout);
         AdminPanel.add(LoginPanel, "AdminLoginPage");
@@ -88,10 +81,6 @@ public class AdminView {
     public CardLayout getCardLayout(){
         return cardLayout;
     }
-
-    public void setCardLayout(CardLayout cardLayoutNew){
-        this.cardLayout = cardLayoutNew;
-    }
     //endregion
 
     //region Get/Set Admin Username & Password Methods
@@ -99,58 +88,26 @@ public class AdminView {
         return txtUsername;
     }
 
-    public void setTxtUsername(JTextField txtAdminUsername){
-        this.txtUsername = txtAdminUsername;
-    }
-
     public JTextField getTxtPassword(){
         return txtPassword;
-    }
-
-    public void setTxtPassword(JTextField txtAdminPassword){
-        this.txtPassword = txtAdminPassword;
     }
     //endregion
 
     //region Button Get/Set Methods
-    public JButton getBtnAdminSubmit(){
-        return btnAdminSubmit;
-    }
-
-    public void setBtnAdminSubmit(JButton btnSubmitAdmin){
-        this.btnAdminSubmit = btnSubmitAdmin;
-    }
-
     public JButton getBtnAddItem(){
         return btnAddItem;
-    }
-
-    public void setBtnAddItem(JButton btnAdd){
-        this.btnAdminSubmit = btnAdd;
     }
 
     public JButton getBtnRemoveItem(){
         return btnRemoveItem;
     }
 
-    public void setBtnRemoveItem(JButton btnRemove){
-        this.btnRemoveItem = btnRemove;
-    }
-
     public JButton getBtnEditItem(){
         return btnEditItem;
     }
 
-    public void setBtnEditItem(JButton btnEditItem){
-        this.btnRemoveItem = btnEditItem;
-    }
-
     public JButton getBtnLogin(){
         return btnLogin;
-    }
-
-    public void setBtnLogin(JButton btnALogin){
-        this.btnLogin = btnALogin;
     }
     //endregion
 
@@ -159,58 +116,20 @@ public class AdminView {
         return txtAdminBarcode;
     }
 
-    public void setTxtAdminBarcode(JTextField txtAdminBarcodes){
-        this.txtAdminBarcode = txtAdminBarcodes;
-    }
-
     public JTextField getTxtAdminStockName(){
         return txtAdminStockName;
-    }
-
-    public void setTxtAdminStockName(JTextField txtAdminStockNames){
-        this.txtAdminStockName = txtAdminStockNames;
     }
 
     public JTextField getTxtAdminQuantity(){
         return txtAdminQuantity;
     }
 
-    public void setTxtAdminQuantity(JTextField txtAdminStockQuantity){
-        this.txtAdminQuantity = txtAdminStockQuantity;
-    }
-
     public JTextField getTxtAdminPrice(){
         return txtAdminPrice;
     }
 
-    public void setTxtAdminPrice(JTextField txtAdminPrices){
-        this.txtAdminPrice = txtAdminPrices;
-    }
-
     public JLabel getLblDetailsIncorrect(){
         return lblDetailsIncorrect;
-    }
-
-    public void setLblDetailsIncorrect(JLabel lblDetailsIncorrect){
-        this.lblDetailsIncorrect = lblDetailsIncorrect;
-    }
-    //endregion
-
-    //region JList Get/Set Methods
-    public JTable getTblAdminEdit() {
-        return tblAdminEdit;
-    }
-
-    public void setTblAdminEdit(JTable tblAdminEdit){
-        this.tblAdminEdit = tblAdminEdit;
-    }
-
-    public JTable getTblAdminView() {
-        return tblAdminView;
-    }
-
-    public void setTblAdminView(JTable tblAdminView){
-        this.tblAdminView = tblAdminView;
     }
 
     //endregion

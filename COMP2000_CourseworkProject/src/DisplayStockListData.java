@@ -1,11 +1,13 @@
 import Controller.StockDatabaseController;
-import Model.StockOrdersModel;
-import View.AdminView;
+import Model.AdminSection.StockOrdersModel;
+import View.AdminSection.AdminView;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class DisplayStockListData {
+    private static DisplayStockListData instance;
+
     AdminView adminView;
     StockDatabaseController stockDatabaseController;
     StockOrdersModel stockOrdersModel;
