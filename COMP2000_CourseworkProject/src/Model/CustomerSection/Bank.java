@@ -1,4 +1,4 @@
-package Model;
+package Model.CustomerSection;
 
 public class Bank{
 

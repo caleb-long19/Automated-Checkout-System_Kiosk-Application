@@ -1,7 +1,7 @@
 package Controller.Payment;
 
 import Controller.StockDatabaseController;
-import Model.AdminSection.StockOrdersModel;
+import Model.AdminSection.Observers.StockOrders;
 import Model.CustomerSection.ICustomer;
 import View.CustomerSection.CustomerKioskView;
 import Model.CustomerSection.CustomerModel;
@@ -14,8 +14,8 @@ public class CustomerController implements ICustomer {
 
     //region Objects and Variables
     //region Class Objects
-    StockDatabaseController sdc;
-    StockOrdersModel som;
+    StockDatabaseController ssd;
+    StockOrders som;
     CustomerModel cm;
     CustomerKioskView ckv;
     //endregion
@@ -35,8 +35,8 @@ public class CustomerController implements ICustomer {
     //endregion
     //endregion
 
-    public CustomerController(StockDatabaseController sdc, StockOrdersModel som, CustomerModel cm, CustomerKioskView ckv){
-        this.sdc = sdc;
+    public CustomerController(StockDatabaseController sdc, StockOrders som, CustomerModel cm, CustomerKioskView ckv){
+        this.ssd = sdc;
         this.som = som;
         this.cm = cm;
         this.ckv = ckv;
@@ -64,21 +64,21 @@ public class CustomerController implements ICustomer {
 
         try{
             //Run a for loop based on the size of the allstockitems array in the StockDatabaseController Class
-            for (int i = 0; i < sdc.allStockItems.size(); i++)
+            for (int i = 0; i < ssd.allStockItems.size(); i++)
             {
                 //IF the input barcode is equal to a barcode stored in the allstockitems array, continue
-                if(userBarcodeInput.equals(Integer.toString(sdc.allStockItems.get(i).getBarcode()))){
+                if(userBarcodeInput.equals(Integer.toString(ssd.allStockItems.get(i).getBarcode()))){
                     //retrieve the quantity from selected stock item and - 1
-                    sdc.allStockItems.get(i).setQuantity(sdc.allStockItems.get(i).getQuantity() - 1);
+                    ssd.allStockItems.get(i).setQuantity(ssd.allStockItems.get(i).getQuantity() - 1);
                     //IF selected stock item has a Quantity of < 0, do not add to basket
-                    if(sdc.allStockItems.get(i).getQuantity() < 0){
+                    if(ssd.allStockItems.get(i).getQuantity() < 0){
                         //Inform the user that we can't add item to basket
-                        JOptionPane.showMessageDialog(null, sdc.allStockItems.get(i).getName() + " is out of Stock!");
+                        JOptionPane.showMessageDialog(null, ssd.allStockItems.get(i).getName() + " is out of Stock!");
                         break;
                     }
                     //Store Item Name and Price into stockName and stockPrice
-                    stockName = sdc.allStockItems.get(i).getName();
-                    stockPrice = sdc.allStockItems.get(i).getPrice();
+                    stockName = ssd.allStockItems.get(i).getName();
+                    stockPrice = ssd.allStockItems.get(i).getPrice();
 
                     //Increment Quantity
                     Quantity += 1;

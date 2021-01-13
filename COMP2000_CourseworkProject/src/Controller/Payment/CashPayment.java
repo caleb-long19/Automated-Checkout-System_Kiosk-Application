@@ -1,8 +1,8 @@
 package Controller.Payment;
 
-import Controller.StockDatabaseController;
+import Controller.Observable.StockDatabaseSystem;
 import Model.CustomerSection.IPaymentMethod;
-import Model.AdminSection.StockOrdersModel;
+import Model.AdminSection.Observers.StockOrders;
 import View.CustomerSection.CustomerKioskView;
 
 import javax.swing.*;
@@ -15,8 +15,8 @@ public class CashPayment implements IPaymentMethod {
     //region Class Objects
     CustomerKioskView skv;
     CustomerController cc;
-    StockDatabaseController sdc;
-    StockOrdersModel som;
+    StockDatabaseSystem sdc;
+    StockOrders som;
     //endregion
 
     //region Variables
@@ -29,7 +29,7 @@ public class CashPayment implements IPaymentMethod {
     //endregion
     //endregion
 
-    public CashPayment(CustomerKioskView ckv, CustomerController cc, StockDatabaseController sdc,  StockOrdersModel som){
+    public CashPayment(CustomerKioskView ckv, CustomerController cc, StockDatabaseSystem sdc, StockOrders som){
         skv = ckv;
         this.cc = cc;
         this.sdc = sdc;

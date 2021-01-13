@@ -3,7 +3,7 @@ package Controller.AdminSection;
 import Controller.StockDatabaseController;
 import Model.AdminSection.AdminModel;
 import Model.AdminSection.IAdminUsers;
-import Model.AdminSection.StockOrdersModel;
+import Model.AdminSection.Observers.StockOrders;
 import View.AdminSection.AdminView;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class AdminUsersController implements IAdminUsers {
     //region Class Objects and Variables
     //Class Objects
     private AdminModel adminModel;
-    private StockOrdersModel stockOrdersModel;
+    private StockOrders stockOrders;
     private AdminView adminView;
     private StockDatabaseController stockDatabaseController;
 
@@ -29,11 +29,11 @@ public class AdminUsersController implements IAdminUsers {
     int Quantity;
     //endregion
 
-    public AdminUsersController(AdminView av, StockOrdersModel som, AdminModel am, StockDatabaseController sdc){
+    public AdminUsersController(AdminView av, StockOrders som, AdminModel am, StockDatabaseController ssd){
         adminView = av;
-        stockOrdersModel = som;
+        stockOrders = som;
         adminModel = am;
-        stockDatabaseController = sdc;
+        stockDatabaseController = ssd;
     }
 
     public void initAdminUsersController(){

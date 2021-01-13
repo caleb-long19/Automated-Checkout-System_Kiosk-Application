@@ -88,8 +88,15 @@ public class AdminView  {
         return txtUsername;
     }
 
+    public void setTxtUsername(JTextField username){
+        txtUsername = username;
+    }
+
     public JTextField getTxtPassword(){
         return txtPassword;
+    }
+
+    public void setTxtPassword(JTextField password){ txtPassword = password;
     }
     //endregion
 
@@ -116,16 +123,32 @@ public class AdminView  {
         return txtAdminBarcode;
     }
 
+    public void setTxtAdminBarcode(JTextField barcode){
+        txtAdminBarcode = barcode;
+    }
+
     public JTextField getTxtAdminStockName(){
         return txtAdminStockName;
+    }
+
+    public void setTxtAdminStockName(JTextField stockName){
+        txtUsername = stockName;
     }
 
     public JTextField getTxtAdminQuantity(){
         return txtAdminQuantity;
     }
 
+    public void setTxtAdminQuantity(JTextField adminQuantity){
+        txtUsername = adminQuantity;
+    }
+
     public JTextField getTxtAdminPrice(){
         return txtAdminPrice;
+    }
+
+    public void setTxtAdminPrice(JTextField adminPrice){
+        txtUsername = adminPrice;
     }
 
     public JLabel getLblDetailsIncorrect(){

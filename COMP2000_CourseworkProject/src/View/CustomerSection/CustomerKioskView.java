@@ -50,7 +50,7 @@ public class CustomerKioskView {
     public JFrame kioskFrame;
     public CardLayout cardLayout = new CardLayout();
 
-    public CustomerKioskView(String AdminMenu){
+    public CustomerKioskView(String CustomerMenu){
         //Set our card layout and add our Panels to it!
         MainKioskPanel.setLayout(cardLayout);
         MainKioskPanel.add(KioskPanel, "CustomerKioskPanel");
@@ -63,7 +63,7 @@ public class CustomerKioskView {
         cardLayout.show(MainKioskPanel, "1");
 
         //Create our form layout
-        kioskFrame = new JFrame(AdminMenu);
+        kioskFrame = new JFrame(CustomerMenu);
         kioskFrame.setResizable(false);
         kioskFrame.add(MainKioskPanel);
         kioskFrame.setSize(500, 500);

@@ -17,7 +17,7 @@ public class Receipt implements IPaymentMethod {
     IPaymentMethod pm;
     CustomerController cc;
     CustomerKioskView ckv;
-    StockDatabaseController sdc;
+    StockDatabaseController ssd;
     CardPayment cardP;
     CashPayment cashP;
     //endregion
@@ -37,11 +37,11 @@ public class Receipt implements IPaymentMethod {
     //endregion
 
     //Extends classes to communicate with Receipt
-    public Receipt(IPaymentMethod ipm, CustomerController cc, CustomerKioskView ckv, StockDatabaseController sdc, CardPayment cardPay, CashPayment cashPay) {
+    public Receipt(IPaymentMethod ipm, CustomerController cc, CustomerKioskView ckv, StockDatabaseController ssd, CardPayment cardPay, CashPayment cashPay) {
         this.pm = ipm;
         this.cc = cc;
         this.ckv = ckv;
-        this.sdc = sdc;
+        this.ssd = ssd;
         cardP = cardPay;
         cashP = cashPay;
     }
@@ -90,13 +90,13 @@ public class Receipt implements IPaymentMethod {
                 setChange("£0.00");
 
                 //If the payment is successful we can remove the purchased stock
-                sdc.saveKioskStock();
+                ssd.saveKioskStock();
             } else if (cashP.cashPayTrue) {
                 setPaymentOption("Cash");
                 setChange("£" + formatter.format(cashP.getCashAmount()));
 
                 //If the payment is successful we can remove the purchased stock
-                sdc.saveKioskStock();
+                ssd.saveKioskStock();
             }
             //retrieve the Total cost of the Customers Items and set them into the Total Cost label
             setTotalCost("£" + formatter.format(cc.getTotalItemPrices()));

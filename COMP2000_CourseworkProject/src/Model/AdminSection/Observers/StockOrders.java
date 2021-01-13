@@ -1,6 +1,8 @@
-package Model.AdminSection;
+package Model.AdminSection.Observers;
 
-public class StockOrdersModel {
+import Controller.Observable.IStockDatabaseSystem;
+
+public class StockOrders implements IStockOrders {
 
     //region Variables
     public int Barcode;
@@ -11,6 +13,10 @@ public class StockOrdersModel {
 
     public double Price;
     //endregion
+
+    public StockOrders(IStockDatabaseSystem stockDatabase){
+        stockDatabase.Add(this);
+    }
 
     //region All GET Methods for StockDatabase to retrieve stored file read Barcode, Name, Quantity, Price
     public int getBarcode(){
@@ -45,6 +51,20 @@ public class StockOrdersModel {
 
     public void setPrice(Double price){
         this.Price = price;
+    }
+
+    @Override
+    public void update(int barcode, String stockName, int quantity, double price) {
+
+        setBarcode(barcode);
+        setName(stockName);
+        setQuantity(quantity);
+        setPrice(price);
+
+        System.out.println("Barcode: " + barcode);
+        System.out.println("Name: " + stockName);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Price: " + price);
     }
     //endregion
 }

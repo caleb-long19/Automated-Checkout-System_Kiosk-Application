@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="COMP2000 Project Folder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/COMP2000_Project_Folder_jar</output-path>
+    <root id="archive" name="COMP2000 Project Folder.jar">
+      <element id="module-output" name="COMP2000 Project Folder" />
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+    </root>
+  </artifact>
+</component>

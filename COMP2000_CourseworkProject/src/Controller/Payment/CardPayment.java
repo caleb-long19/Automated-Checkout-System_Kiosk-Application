@@ -1,8 +1,8 @@
 package Controller.Payment;
 
-import Model.Bank;
+import Model.CustomerSection.Bank;
 import Model.CustomerSection.IPaymentMethod;
-import Model.AdminSection.StockOrdersModel;
+import Model.AdminSection.Observers.StockOrders;
 import View.CustomerSection.CustomerKioskView;
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ public class CardPayment extends Bank implements IPaymentMethod {
     //region Objects and Variables
     //Objects
     CustomerKioskView ckv;
-    StockOrdersModel som;
+    StockOrders som;
     Bank details = new Bank();
 
     //Variables
@@ -25,7 +25,7 @@ public class CardPayment extends Bank implements IPaymentMethod {
     boolean cardPayTrue = false;
     //endregion
 
-    public CardPayment(CustomerKioskView ckv, StockOrdersModel som){
+    public CardPayment(CustomerKioskView ckv, StockOrders som){
         this.ckv = ckv;
         this.som = som;
     }
