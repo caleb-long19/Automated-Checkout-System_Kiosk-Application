@@ -1,5 +1,6 @@
 package Controller.AdminSection;
 
+import Controller.Observable.StockDatabaseSystem;
 import Controller.StockDatabaseController;
 import Model.AdminSection.AdminModel;
 import Model.AdminSection.IAdminUsers;
@@ -18,6 +19,7 @@ public class AdminUsersController implements IAdminUsers {
     private AdminModel adminModel;
     private StockOrders stockOrders;
     private AdminView adminView;
+    private StockDatabaseSystem stockDatabaseSystem;
     private StockDatabaseController stockDatabaseController;
 
     //Variables
@@ -29,11 +31,12 @@ public class AdminUsersController implements IAdminUsers {
     int Quantity;
     //endregion
 
-    public AdminUsersController(AdminView av, StockOrders som, AdminModel am, StockDatabaseController ssd){
+    public AdminUsersController(AdminView av, StockOrders som, AdminModel am, StockDatabaseSystem sds, StockDatabaseController sdc){
         adminView = av;
         stockOrders = som;
         adminModel = am;
-        stockDatabaseController = ssd;
+        stockDatabaseSystem = sds;
+        stockDatabaseController = sdc;
     }
 
     public void initAdminUsersController(){
@@ -93,10 +96,10 @@ public class AdminUsersController implements IAdminUsers {
     @Override
     public void OrderStock() {
         //For loop which runs based on the amount of stock in the StockItemslist.txt
-        for (int i = 0; i < stockDatabaseController.allStockItems.toArray().length; i++)
+        for (int i = 0; i < stockDatabaseSystem.stockItems.toArray().length; i++)
         {
             //Store the Quantity from the txt file into the Quantity variable
-            Quantity = stockDatabaseController.allStockItems.get(i).getQuantity();
+            Quantity = stockDatabaseSystem.stockItems.get(i).getStockQuantity();
             //IF the quantity is < 50, Inform the Admin that stock is being replenished and run ReplenishStockDelivery Method
             if(Quantity < 50){
                 JOptionPane.showMessageDialog(null, "Replenishing Stock On All Low Stock Items","Replenishing Stock", JOptionPane.INFORMATION_MESSAGE);
@@ -113,14 +116,14 @@ public class AdminUsersController implements IAdminUsers {
     @Override
     public void ReplenishStockWarning(int Quantity) {
         //For loop which runs based on the amount of stock in the StockItemslist.txt
-        for (int i = 0; i < stockDatabaseController.allStockItems.toArray().length; i++)
+        for (int i = 0; i < stockDatabaseSystem.stockItems.size(); i++)
         {
             //Store the Quantity inside of the selected index item into Quantity variable
-            Quantity = stockDatabaseController.allStockItems.get(i).getQuantity();
+            Quantity = stockDatabaseSystem.stockItems.get(i).getStockQuantity();
 
             //IF Quantity is > than 50, inform the Admin when the log in
             if(Quantity < 50){
-                JOptionPane.showMessageDialog(null, "Stock is low on these item(s): " + stockDatabaseController.allStockItems.get(i).getName(),"Stock Supply Warning!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Stock is low on these item(s): " + stockDatabaseSystem.stockItems.get(i).getStockName(),"Stock Supply Warning!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -130,13 +133,13 @@ public class AdminUsersController implements IAdminUsers {
         JOptionPane.showMessageDialog(null, "Stock Delivery is on the way!","Replenishing Stock", JOptionPane.INFORMATION_MESSAGE);
         try {
             Thread.sleep(10000);
-            if(trigger == true){
-                for (int i = 0; i < stockDatabaseController.allStockItems.toArray().length; i++)
+            if(trigger){
+                for (int i = 0; i < stockDatabaseSystem.stockItems.toArray().length; i++)
                 {
-                    Quantity = stockDatabaseController.allStockItems.get(i).getQuantity();
+                    Quantity = stockDatabaseSystem.stockItems.get(i).getStockQuantity();
                     if(Quantity < 50){
-                        JOptionPane.showMessageDialog(null, "Stock Delivery Has Been Made For: " + stockDatabaseController.allStockItems.get(i).getName(),"Replenishing Stock", JOptionPane.INFORMATION_MESSAGE);
-                        stockDatabaseController.allStockItems.get(i).setQuantity(100);
+                        JOptionPane.showMessageDialog(null, "Stock Delivery Has Been Made For: " + stockDatabaseSystem.stockItems.get(i).getStockName(),"Replenishing Stock", JOptionPane.INFORMATION_MESSAGE);
+                        stockDatabaseSystem.stockItems.get(i).setQuantity(100);
                         stockDatabaseController.saveKioskStock();
                     }
                 }

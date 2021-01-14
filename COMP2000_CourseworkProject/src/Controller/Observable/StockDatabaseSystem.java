@@ -24,18 +24,13 @@ public class StockDatabaseSystem implements IStockDatabaseSystem {
 
 
     public void sendUpdate(){
-        for (int index = 0; index < stockItems.size(); index++) {
-            stockItems.get(index).update(adminBarcodeInput, adminNameInput, adminQuantity, adminPrice);
+        for (IStockOrders stockItem : stockItems) {
+            stockItem.update(adminBarcodeInput, adminNameInput, adminQuantity, adminPrice);
         }
     }
 
     @Override
     public void Add(IStockOrders stockOrdersModel) {
-        stockItems.add(stockOrdersModel);
-    }
-
-    @Override
-    public void Edit(IStockOrders stockOrdersModel) {
         stockItems.add(stockOrdersModel);
     }
 

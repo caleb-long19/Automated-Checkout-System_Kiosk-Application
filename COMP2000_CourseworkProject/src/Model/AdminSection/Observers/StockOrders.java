@@ -16,55 +16,57 @@ public class StockOrders implements IStockOrders {
 
     public StockOrders(IStockDatabaseSystem stockDatabase){
         stockDatabase.Add(this);
-    }
-
-    //region All GET Methods for StockDatabase to retrieve stored file read Barcode, Name, Quantity, Price
-    public int getBarcode(){
-        return Barcode;
-    }
-
-    public String getName(){
-        return Name;
-    }
-
-    public int getQuantity(){
-        return Quantity;
-    }
-
-    public Double getPrice(){
-        return Price;
-    }
-    //endregion
-
-    //region All SET Methods for StockDatabase to store file read Barcode, Name, Quantity, Price
-    public void setBarcode(int barcode){
-        this.Barcode = barcode;
-    }
-
-    public void setName(String name){
-        this.Name = name;
-    }
-
-    public void setQuantity(int quantity){
-        this.Quantity = quantity;
-    }
-
-    public void setPrice(Double price){
-        this.Price = price;
+        stockDatabase.Remove(this);
     }
 
     @Override
     public void update(int barcode, String stockName, int quantity, double price) {
-
         setBarcode(barcode);
-        setName(stockName);
+        setStockName(stockName);
         setQuantity(quantity);
-        setPrice(price);
-
-        System.out.println("Barcode: " + barcode);
-        System.out.println("Name: " + stockName);
-        System.out.println("Quantity: " + quantity);
-        System.out.println("Price: " + price);
+        setStockPrice(price);
     }
+
+    //region Get/Set Methods
+    @Override
+    public int getBarcode() {
+        return Barcode;
+    }
+
+    @Override
+    public String getStockName() {
+        return Name;
+    }
+
+    @Override
+    public int getStockQuantity() {
+        return Quantity;
+    }
+
+    @Override
+    public double getStockPrice() {
+        return Price;
+    }
+
+    @Override
+    public void setBarcode(int barcode) {
+        Barcode = barcode;
+    }
+
+    @Override
+    public void setStockName(String stockName) {
+        Name = stockName;
+    }
+
+    @Override
+    public void setQuantity(int quantity) {
+        Quantity = quantity;
+    }
+
+    @Override
+    public void setStockPrice(double price) {
+        Price = price;
+    }
+    //endregion
     //endregion
 }

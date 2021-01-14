@@ -1,8 +1,8 @@
 package Controller.Payment;
 
+import Controller.Observable.StockDatabaseSystem;
 import Controller.StockDatabaseController;
 import Model.AdminSection.Observers.StockOrders;
-import Model.CustomerSection.ICustomer;
 import View.CustomerSection.CustomerKioskView;
 import Model.CustomerSection.CustomerModel;
 
@@ -10,11 +10,12 @@ import javax.swing.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class CustomerController implements ICustomer {
+public class CustomerController{
 
     //region Objects and Variables
     //region Class Objects
-    StockDatabaseController ssd;
+    StockDatabaseController sdc;
+    StockDatabaseSystem sds;
     StockOrders som;
     CustomerModel cm;
     CustomerKioskView ckv;
@@ -35,8 +36,9 @@ public class CustomerController implements ICustomer {
     //endregion
     //endregion
 
-    public CustomerController(StockDatabaseController sdc, StockOrders som, CustomerModel cm, CustomerKioskView ckv){
-        this.ssd = sdc;
+    public CustomerController(StockDatabaseController sdc, StockDatabaseSystem sds, StockOrders som, CustomerModel cm, CustomerKioskView ckv){
+        this.sdc = sdc;
+        this.sds = sds;
         this.som = som;
         this.cm = cm;
         this.ckv = ckv;
@@ -61,24 +63,23 @@ public class CustomerController implements ICustomer {
 
         //set the model for the basket list to dm
         ckv.lstBasket.setModel(dm);
-
         try{
-            //Run a for loop based on the size of the allstockitems array in the StockDatabaseController Class
-            for (int i = 0; i < ssd.allStockItems.size(); i++)
+            //Run a for loop based on the size of the stockItem array in the StockDatabaseController Class
+            for (int i = 0; i < sds.stockItems.size(); i++)
             {
-                //IF the input barcode is equal to a barcode stored in the allstockitems array, continue
-                if(userBarcodeInput.equals(Integer.toString(ssd.allStockItems.get(i).getBarcode()))){
+                //IF the input barcode is equal to a barcode stored in the stockItem array, continue
+                if(userBarcodeInput.equals(Integer.toString(sds.stockItems.get(i).getBarcode()))){
                     //retrieve the quantity from selected stock item and - 1
-                    ssd.allStockItems.get(i).setQuantity(ssd.allStockItems.get(i).getQuantity() - 1);
+                    sds.stockItems.get(i).setQuantity(sds.stockItems.get(i).getStockQuantity() - 1);
                     //IF selected stock item has a Quantity of < 0, do not add to basket
-                    if(ssd.allStockItems.get(i).getQuantity() < 0){
+                    if(sds.stockItems.get(i).getStockQuantity() < 0){
                         //Inform the user that we can't add item to basket
-                        JOptionPane.showMessageDialog(null, ssd.allStockItems.get(i).getName() + " is out of Stock!");
+                        JOptionPane.showMessageDialog(null, sds.stockItems.get(i).getStockName() + " is out of Stock!");
                         break;
                     }
                     //Store Item Name and Price into stockName and stockPrice
-                    stockName = ssd.allStockItems.get(i).getName();
-                    stockPrice = ssd.allStockItems.get(i).getPrice();
+                    stockName = sds.stockItems.get(i).getStockName();
+                    stockPrice = sds.stockItems.get(i).getStockPrice();
 
                     //Increment Quantity
                     Quantity += 1;
@@ -105,12 +106,6 @@ public class CustomerController implements ICustomer {
         ckv.getBtnCardPurchases().addActionListener(e -> CardPaymentOption());
         ckv.getBtnCashPurchase().addActionListener(e -> CashPaymentOption());
     }
-
-    @Override
-    public void UpdateStock(int stockQuantity) {
-
-    }
-    //endregion
 
     //region Card/Cash Methods
     public void CardPaymentOption(){

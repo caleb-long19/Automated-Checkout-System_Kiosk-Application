@@ -10,6 +10,8 @@ import Model.AdminSection.AdminModel;
 import Model.CustomerSection.CustomerModel;
 import Model.CustomerSection.IPaymentMethod;
 import Model.AdminSection.Observers.StockOrders;
+import Model.DisplayStockListData;
+import Model.SetUpFacade;
 import View.AdminSection.AdminView;
 import View.CustomerSection.CustomerKioskView;
 
@@ -33,27 +35,27 @@ public class App {
         //region Controller Objects
         IPaymentMethod cpipm = new CardPayment(ckv, som);
         AdminController ac = new AdminController(am, av);
-        StockDatabaseController ssd = new StockDatabaseController(sds, som, av);
-        AdminUsersController auc = new AdminUsersController(av, som, am, ssd);
-        CustomerController cc = new CustomerController(ssd, som, cm, ckv);
+        StockDatabaseController sdc = new StockDatabaseController(sds, av);
+        AdminUsersController auc = new AdminUsersController(av, som, am, sds, sdc);
+        CustomerController cc = new CustomerController(sdc, sds, som, cm, ckv);
         //endregion
 
         //region Class Objects
-        DisplayStockListData dsld = new DisplayStockListData(av, ssd, som);
+        DisplayStockListData dsld = new DisplayStockListData(av, sds, som);
         CardPayment cardPayment = new CardPayment(ckv, som);
         CashPayment cashPayment = new CashPayment(ckv,cc, sds, som);
-        Receipt r = new Receipt(cpipm, cc, ckv, ssd, cardPayment, cashPayment);
+        Receipt r = new Receipt(cpipm, cc, ckv, sdc, cardPayment, cashPayment);
+        SetUpFacade setup = new SetUpFacade(sdc, dsld);
         //endregion
 
         //region Calling Methods From Class Objects
         //Call Methods from Class Objects
+        setup.start(sdc);
         ac.initAdminController();
         auc.initAdminUsersController();
-        dsld.initDisplayStockListData();
         cardPayment.initCPayment();
         cashPayment.initCashPayment();
         r.initReceipt();
-        ssd.LoadKioskData();
         //endregion
 
         //endregion
