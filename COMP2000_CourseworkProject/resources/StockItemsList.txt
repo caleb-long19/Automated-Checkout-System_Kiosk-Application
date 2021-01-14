@@ -1,6 +1,5 @@
-1|Cheese|97|5.99
-2|Chicken Soup|178|3.99
-3|Pizza|382|2.99
-4|Biscuits|125|1.29
-12|Lamb Chop|70|3.99
-7|Soup|70|0.89
+1|Flour|92|5.99
+7|Apple|99|0.89
+112|Pear|96|3.99
+142|Chair|200|2.99
+412|Wheel|97|60.99

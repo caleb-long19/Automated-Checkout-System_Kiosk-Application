@@ -36,7 +36,7 @@ public class App {
         IPaymentMethod cpipm = new CardPayment(ckv, som);
         AdminController ac = new AdminController(am, av);
         StockDatabaseController sdc = new StockDatabaseController(sds, av);
-        AdminUsersController auc = new AdminUsersController(av, som, am, sds, sdc);
+        AdminUsersController auc = new AdminUsersController(av, am, sds, sdc);
         CustomerController cc = new CustomerController(sdc, sds, som, cm, ckv);
         //endregion
 

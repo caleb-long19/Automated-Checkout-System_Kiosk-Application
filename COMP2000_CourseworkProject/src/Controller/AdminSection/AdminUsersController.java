@@ -16,11 +16,10 @@ public class AdminUsersController implements IAdminUsers {
 
     //region Class Objects and Variables
     //Class Objects
-    private AdminModel adminModel;
-    private StockOrders stockOrders;
-    private AdminView adminView;
-    private StockDatabaseSystem stockDatabaseSystem;
-    private StockDatabaseController stockDatabaseController;
+    private final AdminModel adminModel;
+    private final AdminView adminView;
+    private final StockDatabaseSystem stockDatabaseSystem;
+    private final StockDatabaseController stockDatabaseController;
 
     //Variables
     boolean trigger = false;
@@ -31,9 +30,8 @@ public class AdminUsersController implements IAdminUsers {
     int Quantity;
     //endregion
 
-    public AdminUsersController(AdminView av, StockOrders som, AdminModel am, StockDatabaseSystem sds, StockDatabaseController sdc){
+    public AdminUsersController(AdminView av, AdminModel am, StockDatabaseSystem sds, StockDatabaseController sdc){
         adminView = av;
-        stockOrders = som;
         adminModel = am;
         stockDatabaseSystem = sds;
         stockDatabaseController = sdc;
