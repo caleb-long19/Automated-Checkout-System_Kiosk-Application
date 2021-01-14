@@ -1,5 +1,6 @@
-1|Cheese|60|5.99
-2|Chicken|187|3.99
-3|Pizza|389|2.99
-4|Eggs|131|1.29
-5|Flour|90|1.89
+1|Cheese|51|5.99
+2|Chicken|185|3.99
+3|Pizza|385|2.99
+4|KitKat|131|1.29
+7|Beef|300|4.99
+12|Lamb Chop|70|3.99

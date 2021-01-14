@@ -22,7 +22,6 @@ public class StockDatabaseSystem implements IStockDatabaseSystem {
         sendUpdate();
     }
 
-
     public void sendUpdate(){
         for (IStockOrders stockItem : stockItems) {
             stockItem.update(adminBarcodeInput, adminNameInput, adminQuantity, adminPrice);
