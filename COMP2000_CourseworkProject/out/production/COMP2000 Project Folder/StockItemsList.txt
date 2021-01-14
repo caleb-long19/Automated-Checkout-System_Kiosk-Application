@@ -1,6 +1,6 @@
-1|Cheese|47|5.99
-2|Chicken|180|3.99
-3|Pizza|384|2.99
-4|Biscuits|127|1.29
-7|Beef|300|4.99
+1|Cheese|97|5.99
+2|Chicken Soup|178|3.99
+3|Pizza|382|2.99
+4|Biscuits|125|1.29
 12|Lamb Chop|70|3.99
+7|Soup|70|0.89

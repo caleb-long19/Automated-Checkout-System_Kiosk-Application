@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="CalebsKioskApplication:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CalebsKioskApplication_jar</output-path>
+    <root id="root">
+      <element id="archive" name="COMP2000 Project Folder.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/../Application Executable/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="COMP2000 Project Folder" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+    </root>
+  </artifact>
+</component>
