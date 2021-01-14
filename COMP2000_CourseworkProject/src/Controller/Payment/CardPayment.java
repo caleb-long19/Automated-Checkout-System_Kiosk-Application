@@ -1,5 +1,6 @@
 package Controller.Payment;
 
+import Model.ChoosePaymentSingleton;
 import Model.CustomerSection.Bank;
 import Model.CustomerSection.IPaymentMethod;
 import Model.AdminSection.Observers.StockOrders;
@@ -74,9 +75,9 @@ public class CardPayment extends Bank implements IPaymentMethod {
                     && ckv.getTxtCardName().getText().equals(details.getCustomerName())
                     && ckv.getTxtCardNumber().getText().equals(Integer.toString(details.getBankNumber()))){
 
-                //Set bool to true
-                cardPayTrue = true;
-                if(cardPayTrue){
+                //set bool to true
+                ChoosePaymentSingleton.getInstance().setCardOption(true);
+                if(ChoosePaymentSingleton.getInstance().getCardOption()){
                     //Change panel to the Verification Panel
                     ckv.getCardLayout().show(ckv.MainKioskPanel, "VerificationPanel");
 

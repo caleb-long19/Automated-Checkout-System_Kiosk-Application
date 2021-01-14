@@ -1,6 +1,7 @@
 package Controller.Payment;
 
 import Controller.StockDatabaseController;
+import Model.ChoosePaymentSingleton;
 import Model.CustomerSection.IPaymentMethod;
 import View.CustomerSection.CustomerKioskView;
 
@@ -85,13 +86,13 @@ public class Receipt implements IPaymentMethod {
             setDate(dtf.format(now));
 
             //If and Else statements to determine the choice of payment the customer made
-            if (cardP.cardPayTrue) {
+            if (ChoosePaymentSingleton.getInstance().getCardOption()) {
                 setPaymentOption("Credit Card");
                 setChange("£0.00");
 
                 //If the payment is successful we can remove the purchased stock
                 ssd.saveKioskStock();
-            } else if (cashP.cashPayTrue) {
+            } else if (ChoosePaymentSingleton.getInstance().getCashOption()) {
                 setPaymentOption("Cash");
                 setChange("£" + formatter.format(cashP.getCashAmount()));
 
@@ -118,8 +119,8 @@ public class Receipt implements IPaymentMethod {
 
     public void ResetData(){
         //Card/Cash Payment booleans set to false
-        cardP.cardPayTrue = false;
-        cashP.cashPayTrue = false;
+        ChoosePaymentSingleton.getInstance().setCardOption(false);
+        ChoosePaymentSingleton.getInstance().setCashOption(false);
 
         //Set Customer Kiosk View values to default
         ckv.lblInvalidPayment.setText("");

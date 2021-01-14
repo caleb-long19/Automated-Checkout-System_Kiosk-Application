@@ -1,6 +1,7 @@
 package Controller.Payment;
 
 import Controller.Observable.StockDatabaseSystem;
+import Model.ChoosePaymentSingleton;
 import Model.CustomerSection.IPaymentMethod;
 import Model.AdminSection.Observers.StockOrders;
 import View.CustomerSection.CustomerKioskView;
@@ -50,8 +51,6 @@ public class CashPayment implements IPaymentMethod {
             JOptionPane.showMessageDialog(null, "No Cash Amount Has Been Entered!","Warning", JOptionPane.INFORMATION_MESSAGE);
         }
         else {
-            //set bool to true
-            cashPayTrue = true;
 
             //store the Total price of the customers items
             totalCashRequired = cc.getTotalItemPrices();
@@ -64,11 +63,11 @@ public class CashPayment implements IPaymentMethod {
         }
 
         if(Change <= 0){
+            //set bool to true
+            ChoosePaymentSingleton.getInstance().setCashOption(true);
+
             //Store Double Change in serCashAmount
             setCashAmount(Change);
-
-            //Set bool to true
-            cashPayTrue = true;
 
             //Take user to the payment page
             skv.getCardLayout().show(skv.MainKioskPanel, "PaymentComplete");
