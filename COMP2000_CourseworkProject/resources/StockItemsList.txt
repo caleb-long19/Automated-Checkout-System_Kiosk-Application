@@ -1,6 +1,6 @@
-1|Cheese|51|5.99
-2|Chicken|185|3.99
-3|Pizza|385|2.99
-4|KitKat|131|1.29
+1|Cheese|47|5.99
+2|Chicken|180|3.99
+3|Pizza|384|2.99
+4|Biscuits|127|1.29
 7|Beef|300|4.99
 12|Lamb Chop|70|3.99

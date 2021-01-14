@@ -20,10 +20,8 @@ public class CardPayment extends Bank implements IPaymentMethod {
     Bank details = new Bank();
 
     //Variables
-    String VerificationMessage = "Verifying Your Details: ";
     String filepath = "resources\\BankDetails.txt";
     String separator = "\\|";
-    boolean cardPayTrue = false;
     //endregion
 
     public CardPayment(CustomerKioskView ckv, StockOrders som){

@@ -1,9 +1,13 @@
 import Controller.Observable.StockDatabaseSystem;
+import Controller.Payment.CardPayment;
+import Controller.Payment.CashPayment;
+import Controller.Payment.CustomerController;
 import Controller.StockDatabaseController;
 import Model.AdminSection.Observers.IStockOrders;
 import Model.AdminSection.Observers.StockOrders;
 import View.AdminSection.AdminView;
 
+import View.CustomerSection.CustomerKioskView;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -14,26 +18,31 @@ public class Tests {
 
     //region Class Objects
     //Controllers
+    CustomerKioskView customerKioskView;
+    CustomerController customerController;
     StockDatabaseSystem stockDatabaseSystem;
     StockDatabaseController stockDatabaseController;
     AdminView adminView = new AdminView("");
-    IStockOrders stockItem;
-
-    String itemName;
+    IStockOrders iStockOrders;
+    StockOrders stockOrders;
+    CashPayment cashPayment;
+    CardPayment cardPayment;
 
     @Before
     public void SetUp(){
         System.out.println("");
         stockDatabaseSystem = new StockDatabaseSystem();
         stockDatabaseController = new StockDatabaseController(stockDatabaseSystem, adminView);
-        stockItem = new StockOrders(stockDatabaseSystem);
+        iStockOrders = new StockOrders(stockDatabaseSystem);
+        cashPayment = new CashPayment(customerKioskView, customerController, stockDatabaseSystem, stockOrders);
+        cardPayment = new CardPayment(customerKioskView, stockOrders);
 
     }
 
     @Test
     public void testAddStockItemName(){
-        stockItem.setStockName("Beans");
-        stockDatabaseSystem.Add(stockItem);
+        iStockOrders.setStockName("Beans");
+        stockDatabaseSystem.Add(iStockOrders);
         System.out.println(stockDatabaseSystem.stockItems.toString());
         stockDatabaseSystem.stockItems.toArray().toString();
     }
@@ -42,33 +51,33 @@ public class Tests {
     public void testEditStockItemBarcode(){
         System.out.println("Testing Edit Barcode");
         int editBarcode = 12345;
-        stockItem.setBarcode(73904);
-        System.out.println(stockItem.getBarcode());
-        stockItem.setBarcode(editBarcode);
-        System.out.println(stockItem.getBarcode());
-        assertEquals(editBarcode, stockItem.getBarcode());
+        iStockOrders.setBarcode(73904);
+        System.out.println(iStockOrders.getBarcode());
+        iStockOrders.setBarcode(editBarcode);
+        System.out.println(iStockOrders.getBarcode());
+        assertEquals(editBarcode, iStockOrders.getBarcode());
     }
 
     @Test
     public void testEditStockItemName(){
         System.out.println("Testing Edit Name");
         String editName = "Chocolate";
-        stockItem.setStockName("Milk");
-        System.out.println(stockItem.getStockName());
-        stockItem.setStockName(editName);
-        System.out.println(stockItem.getStockName());
-        assertEquals(editName, stockItem.getStockName());
+        iStockOrders.setStockName("Milk");
+        System.out.println(iStockOrders.getStockName());
+        iStockOrders.setStockName(editName);
+        System.out.println(iStockOrders.getStockName());
+        assertEquals(editName, iStockOrders.getStockName());
     }
 
     @Test
     public void testEditStockItemQuantity(){
         System.out.println("Testing Edit Quantity");
         String editName = "Chocolate";
-        stockItem.setStockName("Milk");
-        System.out.println(stockItem.getStockName());
-        stockItem.setStockName(editName);
-        System.out.println(stockItem.getStockName());
-        assertEquals(editName, stockItem.getStockName());
+        iStockOrders.setStockName("Milk");
+        System.out.println(iStockOrders.getStockName());
+        iStockOrders.setStockName(editName);
+        System.out.println(iStockOrders.getStockName());
+        assertEquals(editName, iStockOrders.getStockName());
     }
 
     @Test
@@ -76,19 +85,19 @@ public class Tests {
         System.out.println("Testing Edit Price");
         double editPrice = 2.00;
 
-        stockItem.setStockPrice(5.00);
-        System.out.println(stockItem.getStockPrice());
-        stockItem.setStockPrice(editPrice);
-        System.out.println(stockItem.getStockPrice());
-        assertEquals(editPrice + " ", stockItem.getStockPrice() + " ");
+        iStockOrders.setStockPrice(5.00);
+        System.out.println(iStockOrders.getStockPrice());
+        iStockOrders.setStockPrice(editPrice);
+        System.out.println(iStockOrders.getStockPrice());
+        assertEquals(editPrice + " ", iStockOrders.getStockPrice() + " ");
     }
 
     @Test
     public void testRemoveStockItem(){
         ArrayList<StockOrders> emptyArray = new ArrayList<>();
 
-        stockItem.setStockName("Beans");
-        stockDatabaseSystem.Add(stockItem);
+        iStockOrders.setStockName("Beans");
+        stockDatabaseSystem.Add(iStockOrders);
         System.out.println(stockDatabaseSystem.stockItems.toString());;
         stockDatabaseSystem.stockItems.isEmpty();
     }
@@ -104,70 +113,78 @@ public class Tests {
         stockDatabaseSystem.sendUpdate();
     }
 
-
     @Test
     public void testRestockItem(){
-
-    }
-
-    @Test
-    public void testCustomerKioskAddItem(){
-
+        int RefillQuantity = 50;
+        iStockOrders.setQuantity(30);
+        if(iStockOrders.getStockQuantity() < 40){
+            iStockOrders.setQuantity(RefillQuantity);
+        }
+        assertEquals(RefillQuantity, iStockOrders.getStockQuantity());
     }
 
     @Test
     public void testCreditCardDetails(){
-
+        int bankNumber = 1234;
+        String name = "John";
+        cardPayment.setBankNumber(1234);
+        cardPayment.setBankName("John");
+        if(bankNumber == cardPayment.getBankNumber() && name.equals(cardPayment.getBankName())){
+            System.out.println("Details are correct!");
+        }
+        assertEquals(bankNumber, cardPayment.getBankNumber());
+        assertEquals(name, cardPayment.getBankName());
     }
 
     @Test
-    public void testCashAmountGiven(){
-
+    public void testSetCashAmountGiven(){
+        double cashAmount = 2.00;
+        cashPayment.setCashAmount(cashAmount);
+        assertEquals(cashAmount + "", cashPayment.getCashAmount() + "");
     }
 
     @Test
-    public void testCashAmountReturned(){
-
-    }
-
-    @Test
-    public void testCustomerReceiptDetails(){
-
+    public void testGetCashAmountReturned(){
+        double cashAmount = 2.00;
+        double getcashAmount;
+        cashPayment.setCashAmount(cashAmount);
+        getcashAmount = cashPayment.getCashAmount();
+        assertEquals(cashAmount + "", getcashAmount + "");
     }
 
     @Test
     public void testSetBarcodeMethod(){
         System.out.println("Testing Set Barcode");
         int testBarcode = 12345;
-        stockItem.setBarcode(12345);
-        assertEquals(testBarcode, stockItem.getBarcode());
-        System.out.println(testBarcode + " " + stockItem.getBarcode());
+        iStockOrders.setBarcode(12345);
+        assertEquals(testBarcode, iStockOrders.getBarcode());
+        System.out.println(testBarcode + " " + iStockOrders.getBarcode());
     }
 
     @Test
     public void testSetNameMethod(){
         System.out.println("Testing Set Name");
         String testName = "Beans";
-        stockItem.setStockName("Beans");
-        assertEquals(testName, stockItem.getStockName());
-        System.out.println(testName + " " + stockItem.getStockName());
+        iStockOrders.setStockName("Beans");
+        assertEquals(testName, iStockOrders.getStockName());
+        System.out.println(testName + " " + iStockOrders.getStockName());
     }
 
     @Test
     public void testSetQuantityMethod(){
         System.out.println("Testing Set Quantity");
         int testQuantity = 100;
-        stockItem.setQuantity(100);
-        assertEquals(testQuantity, stockItem.getStockQuantity());
-        System.out.println(testQuantity + " " + stockItem.getStockQuantity());
+        iStockOrders.setQuantity(100);
+        assertEquals(testQuantity, iStockOrders.getStockQuantity());
+        System.out.println(testQuantity + " " + iStockOrders.getStockQuantity());
     }
 
     @Test
     public void testSetPriceMethod(){
         System.out.println("Testing Set Price");
         double testPrice = 2.29;
-        stockItem.setStockPrice(2.29);
-        assertEquals(testPrice + " ", stockItem.getStockPrice() + " ");
-        System.out.println(testPrice + " " + stockItem.getStockQuantity());
+        iStockOrders.setStockPrice(2.29);
+        assertEquals(testPrice + " ", iStockOrders.getStockPrice() + " ");
+        System.out.println(testPrice + " " + iStockOrders.getStockQuantity());
     }
 }

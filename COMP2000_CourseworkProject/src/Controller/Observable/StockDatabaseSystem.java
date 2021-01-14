@@ -23,11 +23,13 @@ public class StockDatabaseSystem implements IStockDatabaseSystem {
     }
 
     public void sendUpdate(){
+        //Store data
         for (IStockOrders stockItem : stockItems) {
             stockItem.update(adminBarcodeInput, adminNameInput, adminQuantity, adminPrice);
         }
     }
 
+    //region Add/Remove methods used to Add or Remove a stock item from the array
     @Override
     public void Add(IStockOrders stockOrdersModel) {
         stockItems.add(stockOrdersModel);
@@ -37,5 +39,6 @@ public class StockDatabaseSystem implements IStockDatabaseSystem {
     public void Remove(IStockOrders stockOrdersModel) {
         stockItems.remove(stockOrdersModel);
     }
+    //endregion
 }
     //endregion

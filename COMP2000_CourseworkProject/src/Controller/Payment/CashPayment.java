@@ -24,7 +24,6 @@ public class CashPayment implements IPaymentMethod {
     Double CashAmount;
     Double totalCashRequired;
     Double Change;
-    boolean cashPayTrue = false;
 
     NumberFormat formatter = new DecimalFormat("#0.00");
     //endregion

@@ -22,6 +22,7 @@ public class DisplayStockListData {
         stockOrders = som;
     }
 
+    //Method used to listen to used selected index input
     public void SetUpLstData(){
         adminView.lstStockEditDisplay.addListSelectionListener(new ListSelectionListener() {
             @Override

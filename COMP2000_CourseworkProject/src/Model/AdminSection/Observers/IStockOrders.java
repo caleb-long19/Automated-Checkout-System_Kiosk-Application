@@ -3,6 +3,7 @@ package Model.AdminSection.Observers;
 public interface IStockOrders {
     void update(int barcode, String stockName, int quantity, double price);
 
+    //region Get/Set variable and methods to store Item Details
     int getBarcode();
     String getStockName();
     int getStockQuantity();
@@ -12,4 +13,5 @@ public interface IStockOrders {
     void setStockName(String stockName);
     void setQuantity(int quantity);
     void setStockPrice(double price);
+    //endregion
 }

@@ -3,6 +3,7 @@ package Model;
 public class ChoosePaymentSingleton {
     private static ChoosePaymentSingleton instance;
 
+    //booleans
     private boolean cardOption = false;
     private boolean cashOption = false;
 
@@ -15,6 +16,7 @@ public class ChoosePaymentSingleton {
         return instance;
     }
 
+    //region Boolean Get/Set Methods to determine what card payment has been chosen
     public boolean getCardOption(){
         return cardOption;
     }
@@ -23,7 +25,6 @@ public class ChoosePaymentSingleton {
         this.cardOption = cardOption;
     }
 
-
     public boolean getCashOption(){
         return cashOption;
     }
@@ -31,4 +32,5 @@ public class ChoosePaymentSingleton {
     public void setCashOption(boolean cashOption){
         this.cashOption = cashOption;
     }
+    //endregion
 }

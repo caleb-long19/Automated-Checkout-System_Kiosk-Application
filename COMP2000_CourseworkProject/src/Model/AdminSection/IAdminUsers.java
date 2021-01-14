@@ -2,6 +2,7 @@ package Model.AdminSection;
 
 public interface IAdminUsers {
 
+    //region Interface for AdminUsers
     void Login();
 
     void AccessStock();
@@ -11,4 +12,6 @@ public interface IAdminUsers {
     void ReplenishStockWarning(int Quantity);
 
     void ReplenishStockOnDelivery();
+    //endregion
+
 }
