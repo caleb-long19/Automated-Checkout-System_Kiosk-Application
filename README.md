@@ -1,7 +1,7 @@
-# COMP2000-Coursework-Application
+# Automated Checkout System - Kiosk Applicatino
  This repository will contain my Automated Checkout System Application and UML Diagram for the COMP2000 Coursework
  
-## COMP200 - Coursework Brief
+## COMP2000 - Coursework Brief
 A supermarket chain requires an Automated Checkout System with a Kiosk User Interface for customers to scan and pay for their goods and a stock database.
 
 The stock database automatically removes items from stock when bought. It will also add, remove and edit existing stock items. 
