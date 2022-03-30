@@ -1,4 +1,4 @@
-# Automated Checkout System - Kiosk Applicatino
+# Automated Checkout System - Kiosk Application
  This repository will contain my Automated Checkout System Application and UML Diagram for the COMP2000 Coursework
  
 ## COMP2000 - Coursework Brief
