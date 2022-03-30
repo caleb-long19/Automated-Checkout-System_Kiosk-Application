@@ -31,15 +31,23 @@ The receipt display is required to be in a separate GUI panel of the application
 - Receipt
 
 ### Screenshots
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/LandingPage.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/Kiosk%20Interface.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/AdminLoginPage.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/AdminKioskPage.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/PaymentPage.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/CreditCardPage.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/CashPage.png?raw=true?raw=true "Landing Page")
-![Landing Page](https://github.com/caleb-long19/COMP2000-Coursework-Application/blob/main/Application%20Screenshots/ReceiptPage.png?raw=true "Landing Page")
+#### Login Page
+<kbd>![Landing Page](Application%20Screenshots/AdminLoginPage.png?)</kbd>
 
+#### User Kiosk Interface
+<kbd>![DSRT - Introduction](Application%20Screenshots/Kiosk%20Interface.png?)</kbd>
+
+#### Admin Kiosk Interface
+<kbd>![DSRT - Introduction](Application%20Screenshots/AdminKioskPage.png?)</kbd>
+
+#### Credit Card Interface
+<kbd>![DSRT - Introduction](Application%20Screenshots/CardPage.png?)</kbd>
+
+#### Cash Interface
+<kbd>![DSRT - Introduction](Application%20Screenshots/CashPage.png?)</kbd>
+
+#### Cash Interface
+<kbd>![DSRT - Introduction](Application%20Screenshots/ReceiptPage.png?)</kbd>
 
 ### Built With
 - IntelliJ (Java)
